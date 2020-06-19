@@ -11,11 +11,15 @@
  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=&libraries=places"></script> 
 <%
 =end%>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <%
+=begin%>
+ <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> 
+<%
+=end%>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css">
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css">
   </head>
 
 <body>

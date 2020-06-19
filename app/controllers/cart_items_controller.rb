@@ -20,12 +20,13 @@ class CartItemsController < ApplicationController
   end
 
   def create
+    # binding.pry
     item = Item.find(params[:item_id])
     @cart_item = @cart.add_item(item)
 
     respond_to do |format|
       if @cart_item.save
-        format.html { redirect_to shop_path(@shop.id) }
+        format.any { redirect_to shop_path(params[:shop_id]) }
         format.js
         format.json { render :show, status: :created, location: @cart_item }
       else
