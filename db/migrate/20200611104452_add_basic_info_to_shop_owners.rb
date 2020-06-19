@@ -1,4 +1,4 @@
-class AddBasicInfoToShopOwners < ActiveRecord::Migration[6.0]
+class AddBasicInfoToShopOwners < ActiveRecord::Migration[5.2]
   def change
     add_column :shop_owners, :first_name, :string, null: false
     add_column :shop_owners, :last_name, :string, null: false

@@ -1,4 +1,4 @@
-class ChangeDatatypePrefectureCodeOfShops < ActiveRecord::Migration[6.0]
+class ChangeDatatypePrefectureCodeOfShops < ActiveRecord::Migration[5.2]
   def change
     change_column :shops, :prefecture_code, :string
   end

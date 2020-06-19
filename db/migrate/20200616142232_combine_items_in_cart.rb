@@ -1,4 +1,4 @@
-class CombineItemsInCart < ActiveRecord::Migration[6.0]
+class CombineItemsInCart < ActiveRecord::Migration[5.2]
   def up
     # カート内に１つの商品に対して複数のCartItemがあった場合は１つのCartItemに置き換える
     Cart.all.each do |cart|

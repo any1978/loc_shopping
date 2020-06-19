@@ -1,4 +1,4 @@
-class AddShopownerConfirmableToDevise < ActiveRecord::Migration[6.0]
+class AddShopownerConfirmableToDevise < ActiveRecord::Migration[5.2]
   def up
     add_column :shop_owners, :confirmation_token, :string
     add_column :shop_owners, :confirmed_at, :datetime

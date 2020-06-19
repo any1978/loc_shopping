@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DeviseCreateShopOwners < ActiveRecord::Migration[6.0]
+class DeviseCreateShopOwners < ActiveRecord::Migration[5.2]
   def change
     create_table :shop_owners do |t|
       ## Database authenticatable

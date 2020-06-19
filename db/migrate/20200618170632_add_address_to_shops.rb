@@ -1,4 +1,4 @@
-class AddAddressToShops < ActiveRecord::Migration[6.0]
+class AddAddressToShops < ActiveRecord::Migration[5.2]
   def change
     add_column :shops, :address, :string
   end

@@ -1,4 +1,4 @@
-class AddOrderIdToUsers < ActiveRecord::Migration[6.0]
+class AddOrderIdToUsers < ActiveRecord::Migration[5.2]
   def change
     add_reference :users, :order, foreign_key: true
   end
