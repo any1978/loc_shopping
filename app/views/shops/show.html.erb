@@ -1,0 +1,61 @@
+<%
+=begin%>
+ <% if notice %>
+	<aside id="notice"><%= notice %></aside>
+<% end %> 
+<%
+=end%>
+
+
+<h1><%= @shop.name %>のショップページ（shop/show)</h1>
+
+<div class="shop-image">
+  <%= image_tag(@shop.image.url(:thumb)) if @shop.image && @shop.image.url %>
+</div>
+
+<div>
+  <%= link_to 'お店の情報を編集する', edit_shop_path %><br>
+</div>
+
+<h2 class = "heading"><%= @shop.name %>の商品一覧</h2>
+<table class="table table-striped">
+<ul class="catalog">
+  <tr>
+    <th class = "subject">商品名</th>
+    <th class = "subject">商品画像</th>
+    <th class = "subject">詳細</th>
+    <th class = "subject">価格(税抜）</th>
+    <th colspan="4"></th>
+  </tr>
+  <% @items.each do |item| %>
+    <tr>
+      <td><%= item.name %></td>
+      <td><%= image_tag(item.image.url, width: 140) if item.image && item.image.url %></td>
+      <td><%= item.remark %></td> 
+      <td><%= item.price %><span> 円</span></td> 
+      <td><%= link_to '詳細を見る', shop_item_path(@shop.id, item.id) %></td>
+      <% if user_signed_in? %> 
+        <td><%= button_to 'カートに入れる', cart_items_path(@shop.id, item_id: item.id), method: :post, remote: true %></td>
+      <% elsif shop_owner_signed_in? %>
+        <td><%= link_to '編集する', edit_shop_item_path(@shop.id, item.id),data: { confirm: '本当に編集していいですか？' }  %></td>
+        <td><%= link_to '削除する', shop_item_path(@shop.id, item.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
+      <% else %>
+        <td><%= link_to 'カートに入れる', new_user_session_path %></td>
+      <% end %> 
+    </tr>
+  <% end %>
+</ul>
+</table>
+  <div id="cart" class="carts">
+    <%= render_if @cart && @cart.cart_items.any?, @cart %>
+  </div>
+<br>
+
+<% if shop_owner_signed_in? %> 
+  <%= link_to '商品を登録する', new_shop_item_path(shop_id: @shop.id), class:"btn" %>
+  <br>
+  <br>
+  <%= link_to 'Back to Mypage', shop_owner_path(current_shop_owner.id) %>
+<% end %> 
+<br>
+<%= link_to 'トップページに戻る', shops_path %>

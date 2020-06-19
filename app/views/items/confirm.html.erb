@@ -1,0 +1,18 @@
+<h3>商品確認画面</h3>
+<%= form_with(model: [@shop, @item], url: shop_items_path, local: true,) do |form| %>
+  <%= form.hidden_field :name %>
+  <%= form.hidden_field :price %>
+  <%= form.hidden_field :stock %>
+  <%= form.hidden_field :remark %>
+  <%= form.hidden_field :image_cache %>
+
+  <p>商品名:<%= @item.name %></p>
+  <p>価格:<%= @item.name %>（税抜）</p>
+  <p>在庫数:<%= @item.stock %> 個</p>
+  <p>ショップ紹介文:<%= @item.remark %></p>
+  <p>ショップイメージ画像:<%= @item.image %></p>
+  <%= image_tag(@item.image.url) if @item.image && @item.image.url %>
+
+  <%= form.submit  "Submit", class:'btn'%><br>
+  <%= form.submit "戻る", name: 'back' %>
+<% end %>

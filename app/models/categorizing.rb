@@ -1,0 +1,2 @@
+class Categorizing < ApplicationRecord
+end

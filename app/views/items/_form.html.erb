@@ -1,0 +1,41 @@
+<%= form_with(model: [@shop,@item], local: true ,url: choose_new_or_edit2 ) do |f| %>
+    <% if @item.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= @item.errors.count %>件のエラーがあります。</h2>
+        <ul>
+        <% @item.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+      <%= f.label :商品名 %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :価格 %>
+      <%= f.number_field :price %> 円（税抜）
+    </div>
+    <div class="field">
+      <%= f.label :在庫数 %>
+      <%= f.number_field :stock %> 個
+    </div>
+
+    <div class="field">
+      <%= f.label :商品紹介文 %>
+      <%= f.text_area  :remark, rows: 5, cols: 60 %>
+    </div>
+    <div class="field">
+      <%= f.label :商品画像 %>
+      <%= image_tag(@item.image.url) if @item.image && @item.image.url %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </div><br>
+
+    <div class="actions">
+      <%= f.submit :Submit, class:'btn' %>
+    </div>
+    <%= link_to 'ショップページに戻る', shop_path(current_shop_owner.id) %>
+    
+<% end %>

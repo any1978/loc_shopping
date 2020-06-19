@@ -1,0 +1,22 @@
+<% shops.each do |shop| %>
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-heading preview">
+          <%= image_tag shop.cover_photo(:medium) %>
+        </div>
+        <div class="panel-body">
+          <%= link_to shop.listing_name, shop %><br/>
+          $<%= shop.price %> - <%= shop.home_type %> - <%= pluralize(shop.bed_shop, "bed") %>
+          <div id="star_<%= shop.id %>"></div> <%= pluralize(shop.average_rating, "review") %>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $('#star_<%= shop.id %>').raty({
+        path: '/assets',
+        readOnly: true,
+        score: <%= shop.average_rating %>
+      });
+    </script>
+<% end %>

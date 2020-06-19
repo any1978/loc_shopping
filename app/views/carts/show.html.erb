@@ -1,0 +1,20 @@
+<article>
+	<% if notice %>
+		<aside id="notice"><%= notice %></aside>
+	<% end %>
+
+	<h2>カートの内容</h2>
+
+	<table>
+		<%= render(@cart.cart_tems) %>
+
+		<tfoot>
+			<tr>
+				<th colspan="2">合計：</th>
+				<td class="price"><%= number_to_currency(@cart.total_price) %></td>
+			</tr>
+		</tfoot>
+	</table>
+
+	<%= button_to 'カートを空にする', @cart, method: :delete, data: { confirm: '本当によろしいですか？' } %>
+</article>

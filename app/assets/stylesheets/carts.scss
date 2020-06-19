@@ -1,0 +1,37 @@
+// Place all the styles related to the carts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+.carts {
+
+	td.price {
+		font-weight: bold;
+		text-align: right;
+	}
+
+	tfoot {
+		th, th.price {
+			padding-top: 1em;
+		}
+
+		th {
+			text-align: right;
+		}
+
+	}
+
+	input[type="submit"] {
+		background-color: #ffd700;
+		border-radius: 0.454em;
+		border: solid thin #696969;
+		color: black;
+		font-size: 1em;
+		padding: 0.354em 2em;
+		margin-top: 1em;
+	}
+
+	input[type="submit"]:hover {
+		background-color: #f5deb3;
+	}
+
+}

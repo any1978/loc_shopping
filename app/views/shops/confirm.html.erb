@@ -1,0 +1,27 @@
+<h3>確認画面</h3>
+<%= form_with(model: @shop, url: shops_path, local: true,) do |form| %>
+  <%= form.hidden_field :name %>
+  <%= form.hidden_field :introduction %>
+  <%= form.hidden_field :image_cache %>
+  <%= form.hidden_field :postcode %>
+  <%= form.hidden_field :prefecture_code %>
+  <%= form.hidden_field :address_city %>
+  <%= form.hidden_field :address_street %>
+  <%= form.hidden_field :address_building %>
+  <%= form.hidden_field :phone_number %>
+
+  <p>ショップ名:<%= @shop.name %></p>
+  <p>ショップ紹介文:<%= @shop.introduction %></p>
+  <p>ショップイメージ画像:<%= @shop.image %></p>
+  <%= image_tag(@shop.image.url) if @shop.image && @shop.image.url %>
+  <p>郵便番号:<%= @shop.postcode %></p>
+  <p>都道府県:<%= @shop.prefecture_code %></p>
+  <p>市区町村:<%= @shop.address_city %></p>
+  <p>番地:<%= @shop.address_street %></p>
+  <p>建物・部屋番号:<%= @shop.address_building %></p>
+  <p>電話番号:<%= @shop.phone_number %></p>
+
+
+  <%= form.submit  "Submit", class:'btn'%><br>
+  <%= form.submit "戻る", name: 'back' %>
+<% end %>

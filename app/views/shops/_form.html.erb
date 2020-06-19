@@ -1,0 +1,65 @@
+<%= form_with(model: @shop, local: true ,url: choose_new_or_edit ) do |f| %>
+    <% if @shop.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= @shop.errors.count %>件のエラーがあります。</h2>
+        <ul>
+        <% @shop.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="shop_title">
+      <%= f.label :ショップ名 %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="shop_content">
+      <%= f.label :ショップ紹介文 %>
+      <%= f.text_area  :introduction, rows: 5, cols: 60 %>
+    </div>
+    <div class="field">
+      <%= f.label :ショップイメージ画像 %>
+      <%= image_tag(@shop.image.url) if @shop.image && @shop.image.url %>
+      <%= f.file_field :image %>
+      <%= f.hidden_field :image_cache %>
+    </div><br>
+
+    <p><strong>住所等詳細情報：</strong></p>
+  
+    <div class="field">
+      <%= f.label :郵便番号 %>
+      <%= f.text_field :postcode %>
+    </div>
+
+    <div class="field">
+      <%= f.label :都道府県 %>
+      <%= f.text_field :prefecture_code %>
+    </div>
+
+    <div class="field">
+      <%= f.label :市区町村 %>
+      <%= f.text_field :address_city %>
+    </div>
+
+    <div class="field">
+      <%= f.label :番地 %>
+      <%= f.text_field :address_street %>
+    </div>
+
+    <div class="field">
+      <%= f.label :建物・部屋番号 %>
+      <%= f.text_field :address_building %>
+    </div>
+
+
+    <div class="field">
+      <%= f.label :電話番号 %>
+      <%= f.telephone_field :phone_number %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit :Submit, class:'btn' %>
+    </div>
+    <%= link_to 'Back to Mypage', shop_owner_path(current_shop_owner.id) %>
+    
+<% end %>

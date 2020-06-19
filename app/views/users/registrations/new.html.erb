@@ -1,0 +1,78 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+
+  <h2>ユーザー登録画面</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+
+
+    <div class="field">
+      <%= f.label :first_name %><br />
+      <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :last_name %><br />
+      <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    </div>
+    
+    <div class="field">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :postcode %><br />
+      <%= f.text_field :postcode, autocomplete: "postcode",class: "postal_code", id: "address_zipcode"%>
+    </div>
+
+    <div class="field">
+      <%= f.label :prefecture_code %><br />
+      <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, { prompt: '選択してください' }, class: "address", id: "address_prefecture_name" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :address_city %><br />
+      <%= f.text_field :address_city, autocomplete: "address_city", class: "address", id: "address_city" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :address_street %><br />
+      <%= f.text_field :address_street, autocomplete: "address_street", class: "address", id: "address_street" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :address_building %><br />
+      <%= f.text_field :address_building, autocomplete: "address_building" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :phone_number %><br />
+      <%= f.telephone_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+    </div>
+
+
+
+    <div class="actions">
+      <%= f.submit "Sign up" %>
+    </div>
+  <% end %>
+
+  <%= render "users/shared/links" %>
+  </div>
+</div>

@@ -5,11 +5,55 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%
+=begin%>
+ <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=&libraries=places"></script> 
+<%
+=end%>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/hot-sneaks/jquery-ui.css">
   </head>
 
-  <body>
+<body>
+
+  <header>
+    <section class="content">
+		<nav class="side_nav">
+      <% if user_signed_in? %> 
+        Logged in as : ユーザー<strong><%= current_user.email %></strong>.
+        <%= link_to 'プロフィール変更', edit_user_registration_path %> |
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+      <% elsif shop_owner_signed_in? %>
+        Logged in as : ショップオーナー <strong><%= current_shop_owner.email %></strong>.
+        <%= link_to 'プロフィール変更', edit_shop_owner_registration_path %> |
+        <%= link_to "ログアウト", destroy_shop_owner_session_path, method: :delete %>
+        <%= link_to "マイページに行く", shop_owner_path(current_shop_owner.id) %>
+        <%= link_to "店舗情報作成", new_shop_path %>
+        <%= link_to "店舗情報編集", edit_shop_path(current_shop_owner.id) %>
+      <% else %>
+      <!-- ユーザーショップオーナーログインしてないとき表示 -->
+        <strong><p>ユーザー入り口</p></strong>
+        <%= link_to "サインアップ", new_user_registration_path %> |
+        <%= link_to "ログイン", new_user_session_path %>
+        <strong><p>ショップオーナー入り口 </p></strong>
+        <%= link_to "サインアップ", new_shop_owner_registration_path %> |
+        <%= link_to "ログイン", new_shop_owner_session_path %>
+      <% end %>
+
+			<ul>
+				<li><strong><a href="/">ホーム</a></strong></li>
+				<li><strong><a href="/contact">問い合わせ</a></strong></li>
+			</ul>
+    </nav>
+  </header>
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <main class='<%= controller.controller_name %>'>
     <%= yield %>
-  </body>
+</body>
 </html>

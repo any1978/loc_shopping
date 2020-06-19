@@ -1,0 +1,41 @@
+<h1><%= @shop_owner.first_name %>さんの 管理ページ(shop_owner/show)</h1>
+
+<%
+=begin%>
+ <div class="user-image">
+  <%= image_tag(@shop_owner.image.url) if @shop_owner.image && @shop_owner.image.url  %>
+</div> 
+<%
+=end%>
+
+<div class="user-image">
+  <img src=<%= @shop_owner.image %> class =  "img-circle avatar-large">
+</div>
+
+<div>
+  <%= link_to 'アカウントを編集する', edit_shop_owner_registration_path %><br>
+</div>
+
+
+<h2 class = "heading">店舗一覧</h2>
+<%# <p id="notice"><%= notice %></p> 
+<table class="table table-striped">
+  <tr>
+    <th class = "subject">店舗名</th>
+    <th class = "subject">店舗画像</th>
+    <th class = "subject">詳細</th>
+    <th colspan="4"></th>
+  </tr>
+  <% @shops.each do |shop| %>
+    <tr>
+      <td><%= shop.name %></td>
+      <td><%= image_tag shop.image.thumb.url if shop.image && shop.image.url %></td>
+      <td><%= shop.introduction %></td>
+      <td><%= link_to '詳細を見る', shop_path(shop.id) %></td>
+      <td><%= link_to '編集する', edit_shop_path(shop.id),data: { confirm: '本当に編集していいですか？' }  %></td>
+      <td><%= link_to '削除する', shop_path(shop.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
+    </tr>
+  <% end %>
+</table>
+<br>
+<%= link_to '新しいお店を登録する', new_shop_path, class:"btn" %>
