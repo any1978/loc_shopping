@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admins_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
     t.bigint "user_id"
     t.bigint "shop_id"
     t.bigint "order_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_cart_items_on_cart_id"
     t.index ["item_id"], name: "index_cart_items_on_item_id"
     t.index ["order_id"], name: "index_cart_items_on_order_id"
@@ -44,21 +44,21 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categorizings", force: :cascade do |t|
     t.bigint "category_id"
     t.bigint "item_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_categorizings_on_category_id"
     t.index ["item_id"], name: "index_categorizings_on_item_id"
   end
@@ -67,8 +67,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
     t.bigint "user_id"
     t.bigint "shop_owner_id"
     t.string "content"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["shop_owner_id"], name: "index_comments_on_shop_owner_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -81,16 +81,16 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
     t.string "address_city", null: false
     t.string "address_street", null: false
     t.string "address_building"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_delivery_addresses_on_user_id"
   end
 
   create_table "favorite_shops", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "shop_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["shop_id"], name: "index_favorite_shops_on_shop_id"
     t.index ["user_id"], name: "index_favorite_shops_on_user_id"
   end
@@ -98,8 +98,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
   create_table "itemizes", force: :cascade do |t|
     t.bigint "item_id"
     t.bigint "shop_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["item_id"], name: "index_itemizes_on_item_id"
     t.index ["shop_id"], name: "index_itemizes_on_shop_id"
   end
@@ -112,8 +112,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
     t.text "remark", null: false
     t.integer "stock", null: false
     t.string "image", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["shop_id"], name: "index_items_on_shop_id"
   end
@@ -131,8 +131,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
     t.integer "tax"
     t.integer "delivery_price", default: 350
     t.integer "tax_included_price"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "name"
     t.string "phone_number"
     t.string "email"
@@ -154,8 +154,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
@@ -196,8 +196,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
     t.string "address_building"
     t.float "latitude"
     t.float "longitude"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.boolean "active"
     t.string "address"
     t.index ["shop_owner_id"], name: "index_shops_on_shop_owner_id"
@@ -214,8 +214,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
     t.datetime "last_sign_in_at"
     t.inet "current_sign_in_ip"
     t.inet "last_sign_in_ip"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
