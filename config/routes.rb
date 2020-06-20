@@ -51,6 +51,9 @@ Rails.application.routes.draw do
     resources :posts
   end
 
+  resources :rooms, :only => [:show, :create] do
+    resources :comments, :only => [:create]
+  end
 
   get 'search' => 'shops#search'
 
