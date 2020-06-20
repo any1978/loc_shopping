@@ -71,17 +71,15 @@ class ShopsController < ApplicationController
     # @shop = Shop.find(params[:id])
     # @items = @shop.items
     @items = Item.where(shop_id: params[:id])
+
+
   end
   
   def edit
   end
 
   def update
-    # binding.pry
     if @shop.update(shop_params)
-      # @shop.address = @shop.prefecture_code + @shop.address_city
-      # @shop.address = @shop.address.gsub(/\d+/, "").gsub(/\-+/, "")
-      # UsernotifierMailer.send_submit_email(@contact).deliver
       redirect_to shop_owner_path(current_shop_owner.id), notice: "ショップ情報を編集しました！"
     else
       render :edit

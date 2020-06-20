@@ -18,7 +18,7 @@
 </div>
 
 <div>
-  <%= button_to 'お店に質問する', shop_post_path(shop_id: @shop.id, post_id: @post) , method: :get %><br>
+  <%= button_to 'お店に質問する', shop_comments_path(shop_id: @shop, comment_id: @comment) , method: :post %><br>
 </div>
 
 <h2 class = "heading"><%= @shop.name %>の商品一覧</h2>

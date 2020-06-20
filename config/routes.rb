@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'rooms/show'
   get 'comments/index'
   # get 'carts/new'
   devise_for :admins
@@ -43,17 +44,14 @@ Rails.application.routes.draw do
 
   resources :orders
   
-  resources :posts do
+  # resources :posts do
+  #   resources :comments
+  # end
+
+  resources :shops do
     resources :comments
   end
 
-  resources :shops do
-    resources :posts
-  end
-
-  resources :rooms, :only => [:show, :create] do
-    resources :comments, :only => [:create]
-  end
 
   get 'search' => 'shops#search'
 
