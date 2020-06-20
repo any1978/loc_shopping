@@ -11,6 +11,11 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: {maximum: 50}
   validates :last_name, presence: true, length: {maximum: 50}
 
+
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 

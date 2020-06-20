@@ -13,4 +13,7 @@ class Shop < ApplicationRecord
   has_many :itemizes, dependent: :destroy
   has_many :items, through: :itemizes
   belongs_to :shop_owner, optional: true
+  
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end

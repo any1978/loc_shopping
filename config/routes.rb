@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       end
     end
   end
+  
 
   resources :carts
 
@@ -41,6 +42,15 @@ Rails.application.routes.draw do
   resources :cart_items
 
   resources :orders
+  
+  resources :posts do
+    resources :comments
+  end
+
+  resources :shops do
+    resources :posts
+  end
+
 
   get 'search' => 'shops#search'
 

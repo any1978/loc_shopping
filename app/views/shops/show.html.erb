@@ -17,6 +17,10 @@
   <%= link_to 'お店の情報を編集する', edit_shop_path %><br>
 </div>
 
+<div>
+  <%= button_to 'お店に質問する', shop_post_path(shop_id: @shop.id, post_id: @post) , method: :get %><br>
+</div>
+
 <h2 class = "heading"><%= @shop.name %>の商品一覧</h2>
 <table class="table table-striped">
 <ul class="catalog">

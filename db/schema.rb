@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_18_170742) do
+ActiveRecord::Schema.define(version: 2020_06_20_071857) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,10 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "shop_id"
+    t.bigint "post_id"
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["shop_id"], name: "index_comments_on_shop_id"
     t.index ["shop_owner_id"], name: "index_comments_on_shop_owner_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -143,6 +147,19 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.bigint "shop_id"
+    t.bigint "user_id"
+    t.bigint "shop_owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_posts_on_shop_id"
+    t.index ["shop_owner_id"], name: "index_posts_on_shop_owner_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
   create_table "shop_owners", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -200,6 +217,8 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
     t.datetime "updated_at", null: false
     t.boolean "active"
     t.string "address"
+    t.bigint "post_id"
+    t.index ["post_id"], name: "index_shops_on_post_id"
     t.index ["shop_owner_id"], name: "index_shops_on_shop_owner_id"
   end
 
@@ -246,7 +265,9 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
   add_foreign_key "cart_items", "users"
   add_foreign_key "categorizings", "categories"
   add_foreign_key "categorizings", "items"
+  add_foreign_key "comments", "posts"
   add_foreign_key "comments", "shop_owners"
+  add_foreign_key "comments", "shops"
   add_foreign_key "comments", "users"
   add_foreign_key "delivery_addresses", "users"
   add_foreign_key "favorite_shops", "shops"
@@ -259,8 +280,12 @@ ActiveRecord::Schema.define(version: 2020_06_18_170742) do
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "shops"
   add_foreign_key "orders", "users"
+  add_foreign_key "posts", "shop_owners"
+  add_foreign_key "posts", "shops"
+  add_foreign_key "posts", "users"
   add_foreign_key "shop_owners", "categories"
   add_foreign_key "shop_owners", "shops"
+  add_foreign_key "shops", "posts"
   add_foreign_key "shops", "shop_owners"
   add_foreign_key "users", "orders"
 end
