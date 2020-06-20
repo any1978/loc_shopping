@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'rooms/show'
-  get 'comments/index'
+  # get 'comments/index'
   # get 'carts/new'
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

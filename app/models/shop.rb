@@ -12,8 +12,7 @@ class Shop < ApplicationRecord
   
   has_many :itemizes, dependent: :destroy
   has_many :items, through: :itemizes
-  belongs_to :shop_owner, optional: true
-  has_many :posts, dependent: :destroy
+  # belongs_to :shop_owner, optional: true
   has_many :comments, dependent: :destroy
-  has_many :rooms
+  # has_many :replies, class_name: Comment, foreign_key: :reply_comment, dependent: :destroy
 end

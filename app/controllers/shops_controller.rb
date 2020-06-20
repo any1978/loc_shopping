@@ -71,7 +71,8 @@ class ShopsController < ApplicationController
     # @shop = Shop.find(params[:id])
     # @items = @shop.items
     @items = Item.where(shop_id: params[:id])
-
+    @comment = Comment.new
+    @comments = @shop.comments
 
   end
   
