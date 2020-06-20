@@ -1,6 +1,6 @@
 class ShopOwnersController < ApplicationController
   # before_action :authenticate_user!, only: [:index, :show, :edit, :update, :destroy]
-  before_action :set_shop_owner, only: [:edit, :show, :update, :destroy]
+  # before_action :set_shop_owner, only: [:edit, :show, :update]
 
   def new
     @shop_owner = ShopOwner.new
@@ -14,8 +14,8 @@ class ShopOwnersController < ApplicationController
   
   def show
     # binding.pry
-    @shop_owner = ShopOwner.find(params[:id])
-    @shops = @shop_owner.shops
+    # @shop_owner = ShopOwner.find(params[:id])
+    @shops = current_shop_owner.shops
     # @items = @shops.item
     # @items = @shops[0][:item].to_i
   end
@@ -40,8 +40,9 @@ class ShopOwnersController < ApplicationController
                                 :password_confirmation)
   end 
 
-  def set_shop_owner
-    # binding.pry
-    @shop_owner = ShopOwner.find(params[:id])
-  end
+  # def set_shop_owner
+  #   # binding.pry
+  #   @shop_owner = ShopOwner.find(params[:id])
+  #   # @shop_owner = ShopOwner.find(params[:shop_owner_id])
+  # end
 end

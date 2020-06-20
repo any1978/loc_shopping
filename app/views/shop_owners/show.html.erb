@@ -1,15 +1,15 @@
-<h1><%= @shop_owner.first_name %>さんの 管理ページ(shop_owner/show)</h1>
+<h1><%= current_shop_owner.first_name %>さんの 管理ページ(shop_owner/show)</h1>
 
 <%
 =begin%>
  <div class="user-image">
-  <%= image_tag(@shop_owner.image.url) if @shop_owner.image && @shop_owner.image.url  %>
+  <%= image_tag(current_shop_owner.image.url) if current_shop_owner.image && current_shop_owner.image.url  %>
 </div> 
 <%
 =end%>
 
 <div class="user-image">
-  <img src=<%= @shop_owner.image %> class =  "img-circle avatar-large">
+  <img src=<%= current_shop_owner.image %> class =  "img-circle avatar-large">
 </div>
 
 <div>

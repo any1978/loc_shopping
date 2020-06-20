@@ -62,6 +62,14 @@ Rails.application.routes.draw do
   }
 
 
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
+  # devise_scope :shop_owner do
+  #   get '/shop_owners/sign_out' => 'devise/sessions#destroy'
+  # end
+
   # devise_for :admins, path: 'admins', controllers: {
   #   sessions: 'admins/sessions'
   # }
