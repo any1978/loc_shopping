@@ -1,0 +1,20 @@
+<p><%= notice %></p>
+<table class= "table table-striped" >
+  <tr>
+    <th class = "subject">ショップ名</th>
+    <th class = "subject">イメージ</th>
+    <th class = "subject">紹介文</th>
+    <th class = "subject"></th>
+  </tr>
+  <% @favorites.each do |favorite| %>
+  <%# shop = shop.find_by(id: favorite.shop_id) %>
+  <tr>
+    <td><%= favorite.shop.name %></td>
+    <td><%= image_tag(favorite.shop.image.url(:thumb)) if favorite.shop.image && favorite.shop.image.url %></td>
+    <td><%= favorite.shop.introduction %></td>
+    <td ><%= link_to '店内を見る', shop_path(favorite.shop.id) %></td>
+  </tr>
+  <% end %>
+</table>
+
+<%= link_to 'TOPページに戻る', shops_path %>

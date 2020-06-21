@@ -31,6 +31,7 @@
       <% if user_signed_in? %> 
         Logged in as : ユーザー<strong><%= current_user.email %></strong>.
         <%= link_to 'プロフィール変更', edit_user_registration_path %> |
+        <%= link_to "お気に入りのお店一覧を見る", favorites_path, method: :get %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       <% elsif shop_owner_signed_in? %>
         Logged in as : ショップオーナー <strong><%= current_shop_owner.email %></strong>.

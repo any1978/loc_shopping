@@ -51,8 +51,8 @@ Rails.application.routes.draw do
   resources :shops do
     resources :comments
   end
-  
-  resources :favorites, only: [:create, :destroy]
+
+  resources :favorites, only: [:index, :create, :destroy]
 
   get 'search' => 'shops#search'
 

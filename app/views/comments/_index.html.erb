@@ -1,4 +1,4 @@
-<% binding.pry %>
+
 <% comments.each do |comment| %>
   <% unless comment.id.nil? %>
     <p><strong><%= link_to "#{comment.user.first_name}さん", shop_path(comment.shop.id) %></strong></p>
