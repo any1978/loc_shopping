@@ -1,9 +1,27 @@
+<% binding.pry %>
 <% comments.each do |comment| %>
   <% unless comment.id.nil? %>
-    <p><%= link_to "#{comment.user.name}さん", shop_path(comment.user.id) %></p>
-    <p>コメント：<%= comment.content %></p>
+    <p><strong><%= link_to "#{comment.user.first_name}さん", shop_path(comment.shop.id) %></strong></p>
+    <p>　コメント：<%= comment.content %>
     <% if comment.user == current_user %>
-      <p><%= link_to 'コメントを削除する', shop_comment_path(comment.shop_id, comment.id), method: :delete, remote: true %></p>
+      <span >　<%= link_to shop_comment_path(comment.shop_id, comment.id), method: :delete, remote: true do %><i class="far fa-trash-alt fa-lg"></i><% end %></span></p>
     <% end %>
+
+  <%
+=begin%>
+ <p><strong><%= link_to "●店長：", shop_path(comment.shop.id) %></strong></p>
+    <p>　コメント：<%= comment.content %>
+    <% if shop_owner_signed_in? %> 
+<%
+=end%>
+<%
+=begin%>
+ 
+ <% if comment.shop.shop_owner_id == current_shop_owner.id %> 
+
+      <span >　<%= link_to shop_comment_path(comment.shop_id, comment.id), method: :delete, remote: true do %><i class="far fa-trash-alt fa-lg"></i><% end %></span></p>
+      <% end %> 
+<%
+=end%>
   <% end %>
 <% end %>
