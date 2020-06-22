@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-
+  has_many :authentications
+  
   include JpPrefecture
   jp_prefecture :prefecture_code#, method_name: :pref
 
