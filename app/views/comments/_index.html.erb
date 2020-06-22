@@ -7,6 +7,8 @@
     <% end %>
 
 
+ <%
+=begin%>
  <p><strong><%= link_to "[店長]", shop_path(comment.shop.id) %></strong></p>
       <p>　コメント：<%= comment.content %>
     <% if shop_owner_signed_in? %> 
@@ -14,7 +16,9 @@
         <span >　<%= link_to shop_comment_path(comment.shop_id, comment.id), method: :delete, remote: true do %><i class="far fa-trash-alt fa-lg"></i><% end %></span></p>
       <% end %> 
 
- <% end %> 
+ <% end %>  
+<%
+=end%>
 
   <% end %>
 <% end %>
