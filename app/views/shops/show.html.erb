@@ -24,17 +24,9 @@
 <div>
   <%= link_to 'お店の情報を編集する', edit_shop_path %><br>
 </div>
-  <%
-=begin%>
- <% if user_signed_in? %> 
-    <div>
-      <%= button_to 'お店に質問する', shop_comments_path(shop_id: @shop, comment_id: @comment, user_id: current_user.id), method: :post %><br>
-    </div>
-  <% end %> 
-<%
-=end%>
+
 <br/>
-  <h4><strong>お店に質問する</strong></h4>
+  <h4><strong>質問コーナー</strong></h4>
 <div>
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments } %>

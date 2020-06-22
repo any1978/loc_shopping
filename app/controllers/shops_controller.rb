@@ -76,8 +76,9 @@ class ShopsController < ApplicationController
     @comments = @shop.comments
     #コメント追加
     # @new_comments = Comment.new
-
-    @favorite = current_user.favorites.find_by(shop_id: @shop.id)
+    if user_signed_in?
+      @favorite = current_user.favorites.find_by(shop_id: @shop.id)
+    end
   end
   
   def edit

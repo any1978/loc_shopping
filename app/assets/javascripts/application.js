@@ -24,3 +24,16 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+
+// // require
+// const Peer = require('skyway-js');
+// const peer = new Peer({key: '48c391bb-9441-4780-a274-c084158b49d2'});
+
+// // import
+// import Peer from 'skyway-js';
+// const peer = new Peer({key: 'あなたのAPIキー'});
+
+//   //PeerID取得
+//   peer.on('open', () => {
+//     document.getElementById('my-id').textContent = peer.id;
+//   });

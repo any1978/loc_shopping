@@ -1,4 +1,10 @@
 <!DOCTYPE html>
+<!-- ↓skyway追加-->
+<%
+=begin%>
+ <html lang="ja"> 
+<%
+=end%>
 <html>
   <head>
     <title>Localshopping</title>
@@ -21,6 +27,15 @@
     <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+  <!-- ↓ここからskyway追加 -->
+  <%
+=begin%>
+ <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.webrtc.ecl.ntt.com/skyway-latest.js"></script>
+  <title>SkyWayチュートリアル</title> 
+<%
+=end%>
   </head>
 
 <body>
@@ -61,5 +76,32 @@
   <p class="alert"><%= alert %></p>
   <main class='<%= controller.controller_name %>'>
     <%= yield %>
+
+    <%
+=begin%>
+ <!-- ↓ここからskyway追加 -->
+    <video id="my-video" width="400px" autoplay muted playsinline></video>
+    <p id="my-id"></p>
+    <script>
+  let localStream;
+
+  // カメラ映像取得
+  navigator.mediaDevices.getUserMedia({video: true, audio: true})
+    .then( stream => {
+    // 成功時にvideo要素にカメラ映像をセットし、再生
+    const videoElm = document.getElementById('my-video')
+    videoElm.srcObject = stream;
+    videoElm.play();
+    // 着信時に相手にカメラ映像を返せるように、グローバル変数に保存しておく
+    localStream = stream;
+  }).catch( error => {
+    // 失敗時にはエラーログを出力
+    console.error('mediaDevice.getUserMedia() error:', error);
+    return;
+  });
+
+</script> 
+<%
+=end%>
 </body>
 </html>
