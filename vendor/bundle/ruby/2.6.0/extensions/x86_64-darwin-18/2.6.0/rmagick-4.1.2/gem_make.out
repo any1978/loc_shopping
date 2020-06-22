@@ -1,0 +1,33 @@
+current directory: /Users/jun/dic/loc_shopping/vendor/bundle/ruby/2.6.0/gems/rmagick-4.1.2/ext/RMagick
+/Users/jun/.rbenv/versions/2.6.5/bin/ruby -I /Users/jun/.rbenv/versions/2.6.5/lib/ruby/2.6.0 -r ./siteconf20200622-86079-1xhjibq.rb extconf.rb
+checking for brew... yes
+checking for Ruby version >= 2.3.0... yes
+checking for pkg-config... yes
+
+
+[31m[1mERROR: Can't install RMagick 4.1.2. Can't find ImageMagick with pkg-config
+[0m
+
+*** extconf.rb failed ***
+Could not create Makefile due to some reason, probably lack of necessary
+libraries and/or headers.  Check the mkmf.log file for more details.  You may
+need configuration options.
+
+Provided configuration options:
+	--with-opt-dir
+	--without-opt-dir
+	--with-opt-include
+	--without-opt-include=${opt-dir}/include
+	--with-opt-lib
+	--without-opt-lib=${opt-dir}/lib
+	--with-make-prog
+	--without-make-prog
+	--srcdir=.
+	--curdir
+	--ruby=/Users/jun/.rbenv/versions/2.6.5/bin/$(RUBY_BASE_NAME)
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /Users/jun/dic/loc_shopping/vendor/bundle/ruby/2.6.0/extensions/x86_64-darwin-18/2.6.0/rmagick-4.1.2/mkmf.log
+
+extconf failed, exit code 1
