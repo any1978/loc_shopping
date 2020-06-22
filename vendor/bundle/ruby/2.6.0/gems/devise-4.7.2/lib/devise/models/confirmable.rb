@@ -159,7 +159,7 @@ module Devise
       # Skips sending the confirmation/reconfirmation notification email after_create/after_update. Unlike
       # #skip_confirmation!, record still requires confirmation.
       def skip_confirmation_notification!
-        @skip_confirmation_notification = true
+        @skip_confirmation_notification = false
       end
 
       # If you don't want reconfirmation to be sent, neither a code
