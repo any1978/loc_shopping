@@ -10,17 +10,15 @@
     <title>Localshopping</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%
-=begin%>
- <%= favicon_link_tag('favicon.ico') %> 
-<%
-=end%>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%
-=begin%>
- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=&libraries=places"></script> 
-<%
-=end%>
+
     <%
 =begin%>
  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %> 
@@ -41,34 +39,30 @@
 <%
 =end%>
   </head>
+  <body style="height:1500px">
 
 <body>
 
   <header>
-    <section class="content">
-		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <a class="navbar-brand" href="/">地元でお買い物</a>
+    <ul class="navbar-nav " >
       <% if user_signed_in? %> 
-        <strong><a href="/">ホーム</a></strong>
-        Logged in as : ユーザー<strong><%= current_user.email %></strong>.
-        <%= link_to 'アカウント情報変更', edit_user_registration_path %> |
-        <%= link_to "お気に入りのお店一覧を見る", favorites_path, method: :get %>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <li class="nav-item">Logged in as : ユーザー　<%= current_user.first_name %></li>
+        <li class="nav-item"><%= link_to 'アカウント情報変更', edit_user_registration_path %></li>
+        <li class="nav-item"><%= link_to "お気に入りのお店一覧を見る", favorites_path, method: :get %></li>
+        <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
       <% elsif shop_owner_signed_in? %>
-        <strong><a href="/">ホーム</a></strong>
-        Logged in as : ショップオーナー <strong><%= current_shop_owner.email %></strong>.
-        <%= link_to "マイページに行く", shop_owner_path(current_shop_owner.id) %>
-        <%= link_to "店舗情報作成", new_shop_path %>
-        <%= link_to 'アカウント情報変更', edit_shop_owner_registration_path %> |
-        <%= link_to "ログアウト", destroy_shop_owner_session_path, method: :delete %>
+        <li class="nav-item">Logged in as : ショップオーナー <%= current_shop_owner.email %></li>
+        <li class="nav-item"><%= link_to "マイページに行く", shop_owner_path(current_shop_owner.id) %></li>
+        <li class="nav-item"><%= link_to "店舗情報作成", new_shop_path %></li>
+        <li class="nav-item"><%= link_to 'アカウント情報変更', edit_shop_owner_registration_path %></li>
+        <li class="nav-item"><%= link_to "ログアウト", destroy_shop_owner_session_path, method: :delete %></li>
       <% else %>
       <!-- ユーザーショップオーナーログインしてないとき表示 -->
-        <strong><a href="/">ホーム</a></strong>
-        <strong><p>ユーザー入り口</p></strong>
-        <%= link_to "サインアップ", new_user_registration_path %> |
-        <%= link_to "ログイン", new_user_session_path %>
-        <strong><p>ショップオーナー入り口 </p></strong>
-        <%= link_to "サインアップ", new_shop_owner_registration_path %> |
-        <%= link_to "ログイン", new_shop_owner_session_path %>
+        <li class="nav-item navbar-light"><%= link_to "お買い物ログイン", new_user_session_path %></li>
+        <li class="nav-item"><%= link_to "オーナーログイン", new_shop_owner_session_path %></li>
       <% end %>
 
     </nav>
@@ -76,7 +70,7 @@
 
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-  <main class='<%= controller.controller_name %>'>
+  
     <%= yield %>
 
     <%

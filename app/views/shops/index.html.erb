@@ -1,8 +1,8 @@
-
+<div class="container-fluid" style="margin-top:80px">
 <% if current_user.try(:admin?) %>
-  <h1>地元でお買い物(admin）</h1>
+  <h3>周辺のお店を探してみる(admin）</h3>
 <% else %>
-  <h1>地元でお買い物</h1>
+  <h3>周辺のお店を探す</h3>
 <% end %>
 
 
@@ -13,31 +13,23 @@
   </div> 
 
   <div>
-    <%= submit_tag "周辺のお店を検索する", class: "btn btn-normal btn-block" %>
+    <%= submit_tag "検索", class: "btn btn-normal btn-block" %>
   </div>
 <% end %> 
 
 <br/><hr/><br/>
 
-<div id="main">
+
 <h2>shop一覧</h2>
-  <div id="left">
-    <table>
-      <tr>
-        <th class = "subject">ショップ名</th>
-        <th class = "subject">ショップイメージ</th>
-        <th class = "subject">紹介文</th>
-        <th colspan="3"></th>
-      </tr>
+  <div class="card-group" style="width:300px"> 
     <% @shops.each do |shop| %>
-      <tr>
-        <td><%= shop.name %></td>
-        <td><%= image_tag(shop.image.url) if shop.image && shop.image.url %></td>
-        <td><%= shop.introduction %></td>
-        <td ><%= link_to 'ショップページを見る', shop_path(shop.id) %></td>
-      </tr>
+        <div class="card-img-top"><%= image_tag(shop.image.url) if shop.image && shop.image.url %></div>
+        <div class="card-body">
+          <h4 class="card-title"><%= shop.name %></h4>
+          <p class="card-text"><%= shop.introduction %></p>
+          <p class="btn" ><%= link_to 'ショップページを見る', shop_path(shop.id) %></p>
+        </div>
     <% end %>
-    </table>
   </div>
 
 <%
