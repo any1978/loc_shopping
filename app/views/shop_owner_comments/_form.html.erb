@@ -3,7 +3,16 @@
       <div class="input-field">
         <%= f.text_area :content, class: "materialize-textarea" %>
         <%= f.label :content, "コメント内容", class: "active" %>
-        <%= f.submit "送信する" %>
+        <%= f.submit "送信" %>
       </div>
+      <%
+=begin%>
+ <div>
+        <%= button_tag :type => "submit", :class =>"waves-effect waves-light btn" do %>
+          <%= "submit" %>
+        <% end %>
+      </div> 
+<%
+=end%>
     <% end %>
   </div>
