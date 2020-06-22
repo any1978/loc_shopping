@@ -2,12 +2,12 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :authentications
-  
+
   include JpPrefecture
   jp_prefecture :prefecture_code#, method_name: :pref
 
   devise :database_authenticatable, :registerable,
-        :recoverable, :rememberable, :trackable, :validatable, :confirmable
+        :recoverable, :rememberable, :trackable, :validatable#, :confirmable
 
   validates :first_name, presence: true, length: {maximum: 50}
   validates :last_name, presence: true, length: {maximum: 50}
