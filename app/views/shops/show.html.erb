@@ -5,10 +5,7 @@
 <% end %> 
 <%
 =end%>
-<div id="shop_owner_comments_area">
-  <%= render partial: 'shop_owner_comments/index', locals: { shop_owner_comments: @shop_owner_comments, shop: @shop } %>
-</div>
-  <%= render partial: 'shop_owner_comments/form', locals: { shop_owner_comment: @shop_owner_comment, shop: @shop } %>
+
 
 <h1><%= @shop.name %>のショップページ（shop/show)</h1>
 
@@ -29,17 +26,21 @@
 </div>
 
 <br/>
-  <h4><strong>質問コーナー</strong></h4>
-<div>
+  <h4><strong>質問コーナー</strong></h4>  
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments } %>
   </div>  
   <% if user_signed_in? %>
     <%= render partial: 'comments/form', locals: { comment: @comment} %>
-  <% elsif shop_owner_signed_in? %>
-    <%= render partial: 'comments/form', locals: { comment: @comment} %>
   <% end %>
-</div>
+  </div>
+   <br/>
+  <div id="shop_owner_comments_area">
+    <%= render partial: 'shop_owner_comments/index', locals: { shop_owner_comments: @shop_owner_comments, shop: @shop } %>
+    <% if shop_owner_signed_in? %>
+      <%= render partial: 'shop_owner_comments/form', locals: { shop_owner_comment: @shop_owner_comment, shop: @shop } %>
+    <% end %>
+  <div>
 
 
 <h2 class = "heading"><%= @shop.name %>の商品一覧</h2>

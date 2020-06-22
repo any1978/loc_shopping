@@ -2,6 +2,7 @@
   <% unless comment.id.nil? %>
     <p><strong><%= link_to "#{comment.user.first_name}さん", shop_path(comment.shop.id) %></strong></p>
     <p>　コメント：<%= comment.content %>
+    <span>投稿日時:<%= time_ago_in_words(comment.created_at) %></span>
     <% if comment.user == current_user %>
       <span >　<%= link_to shop_comment_path(comment.shop_id, comment.id), method: :delete, remote: true do %><i class="far fa-trash-alt fa-lg"></i><% end %></span></p>
     <% end %>
