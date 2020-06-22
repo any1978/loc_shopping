@@ -46,21 +46,23 @@
 
   <header>
     <section class="content">
-		<nav class="side_nav">
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
       <% if user_signed_in? %> 
+        <strong><a href="/">ホーム</a></strong>
         Logged in as : ユーザー<strong><%= current_user.email %></strong>.
-        <%= link_to 'プロフィール変更', edit_user_registration_path %> |
+        <%= link_to 'アカウント情報変更', edit_user_registration_path %> |
         <%= link_to "お気に入りのお店一覧を見る", favorites_path, method: :get %>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       <% elsif shop_owner_signed_in? %>
+        <strong><a href="/">ホーム</a></strong>
         Logged in as : ショップオーナー <strong><%= current_shop_owner.email %></strong>.
-        <%= link_to 'プロフィール変更', edit_shop_owner_registration_path %> |
-        <%= link_to "ログアウト", destroy_shop_owner_session_path, method: :delete %>
         <%= link_to "マイページに行く", shop_owner_path(current_shop_owner.id) %>
         <%= link_to "店舗情報作成", new_shop_path %>
-        <%= link_to "店舗情報編集", edit_shop_path(current_shop_owner.id) %>
+        <%= link_to 'アカウント情報変更', edit_shop_owner_registration_path %> |
+        <%= link_to "ログアウト", destroy_shop_owner_session_path, method: :delete %>
       <% else %>
       <!-- ユーザーショップオーナーログインしてないとき表示 -->
+        <strong><a href="/">ホーム</a></strong>
         <strong><p>ユーザー入り口</p></strong>
         <%= link_to "サインアップ", new_user_registration_path %> |
         <%= link_to "ログイン", new_user_session_path %>
@@ -69,10 +71,6 @@
         <%= link_to "ログイン", new_shop_owner_session_path %>
       <% end %>
 
-			<ul>
-				<li><strong><a href="/">ホーム</a></strong></li>
-				<li><strong><a href="/contact">問い合わせ</a></strong></li>
-			</ul>
     </nav>
   </header>
 
