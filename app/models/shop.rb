@@ -19,4 +19,5 @@ class Shop < ApplicationRecord
   
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
+  has_many :shop_owner_comments, dependent: :destroy
 end
