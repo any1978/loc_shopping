@@ -37,7 +37,7 @@
    <br/>
   <div id="shop_owner_comments_area">
     <%= render partial: 'shop_owner_comments/index', locals: { shop_owner_comments: @shop_owner_comments, shop: @shop } %>
-    <% if shop_owner_signed_in? %>
+    <% if current_shop_owner == @shop.shop_owner %>
       <%= render partial: 'shop_owner_comments/form', locals: { shop_owner_comment: @shop_owner_comment, shop: @shop } %>
     <% end %>
   <div>
