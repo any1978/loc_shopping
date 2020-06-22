@@ -19,16 +19,15 @@
 #   phone_number = Faker::PhoneNumber.phone_number
 #   password = Faker::Internet.password
 
-#   Shop.create(
-#     name: name,
-#     postcode: postcode,
-#     prefecture_code: prefecture_code,
-#     address_city: address_city,
-#     address_street: address_street,
-#     phone_number: phone_number,
-#     introduction: content
-
-#   )
+  Shop.create(
+    name: "アイウエオ",
+    postcode: "12345678",
+    prefecture_code: "鹿児島県",
+    address_city: "鹿児島市吉野町",
+    address_street: "1-2-3",
+    phone_number: "09040071234",
+    introduction: "美味しい"
+  )
 # end
 
 # Item.delete_all
