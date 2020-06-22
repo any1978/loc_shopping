@@ -1,0 +1,24 @@
+<%= render 'layouts/flash' %>
+<div class="shop-content show-box">
+  <%= simple_format(shop.name) %>
+</div>
+
+<% ShopOwnerComment.all.order(created_at: :desc).each do |shop_owner_comment| %>
+  <% if shop_owner_comment.id.present? %>
+    <div class="show-shop_owner_comment show-box" id="shop_owner_comment_<%= shop_owner_comment.id %>">
+      <div>
+      </div>
+      <div id="errors_area_<%= shop_owner_comment.id %>">
+        <%= render partial: 'shop_owner_comments/edit_error' %>
+      </div>
+      <div class="shop_owner_comment-content" id ="this_shop_owner_comment_<%= shop_owner_comment.id %>">
+        <%= simple_format(shop_owner_comment.content) %>
+      </div>
+      <span>投稿日時:<%= time_ago_in_words(shop_owner_comment.created_at) %></span>
+        <span class="badge"><%= link_to t('.delete'), shop_shop_owner_comment_path(shop_owner_comment.shop_id, shop_owner_comment.id), method: :delete, remote: true,
+                                        data: { confirm: "本当に削除しますか?"} %></span>
+        <span class="badge"><%= link_to t('.edit'), edit_shop_shop_owner_comment_path(shop, shop_owner_comment), remote: true %></span>
+
+    </div>
+  <% end %>
+<% end %>

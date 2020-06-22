@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
   resources :shops do
     resources :comments
+    resources :shop_owner_comments
   end
 
   resources :favorites, only: [:index, :create, :destroy]

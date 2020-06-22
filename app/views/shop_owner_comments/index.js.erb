@@ -1,0 +1,3 @@
+$("#shop_owner_comments_area").html("<%= j(render 'shop_owner_comments/index', { shop_owner_comments: @shop_owner_comment.shop.shop_owner_comments, shop: @shop_owner_comment.shop }) %>")
+$("textarea").val('')
+$('#error_explanation').remove();
