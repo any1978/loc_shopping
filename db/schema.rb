@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_21_111148) do
+ActiveRecord::Schema.define(version: 2020_06_22_085320) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,8 +64,7 @@ ActiveRecord::Schema.define(version: 2020_06_21_111148) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "shop_owner_id"
+    t.integer "user_id"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,8 +73,6 @@ ActiveRecord::Schema.define(version: 2020_06_21_111148) do
     t.integer "reply_comment"
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["shop_id"], name: "index_comments_on_shop_id"
-    t.index ["shop_owner_id"], name: "index_comments_on_shop_owner_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "delivery_addresses", force: :cascade do |t|
@@ -166,6 +163,15 @@ ActiveRecord::Schema.define(version: 2020_06_21_111148) do
     t.index ["shop_id"], name: "index_posts_on_shop_id"
     t.index ["shop_owner_id"], name: "index_posts_on_shop_owner_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "shop_owner_comments", force: :cascade do |t|
+    t.string "content"
+    t.bigint "shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "shop_owner_id"
+    t.index ["shop_id"], name: "index_shop_owner_comments_on_shop_id"
   end
 
   create_table "shop_owners", force: :cascade do |t|
@@ -274,9 +280,7 @@ ActiveRecord::Schema.define(version: 2020_06_21_111148) do
   add_foreign_key "categorizings", "categories"
   add_foreign_key "categorizings", "items"
   add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "shop_owners"
   add_foreign_key "comments", "shops"
-  add_foreign_key "comments", "users"
   add_foreign_key "delivery_addresses", "users"
   add_foreign_key "favorite_shops", "shops"
   add_foreign_key "favorite_shops", "users"
@@ -291,6 +295,7 @@ ActiveRecord::Schema.define(version: 2020_06_21_111148) do
   add_foreign_key "posts", "shop_owners"
   add_foreign_key "posts", "shops"
   add_foreign_key "posts", "users"
+  add_foreign_key "shop_owner_comments", "shops"
   add_foreign_key "shop_owners", "categories"
   add_foreign_key "shop_owners", "shops"
   add_foreign_key "shops", "posts"

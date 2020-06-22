@@ -74,6 +74,9 @@ class ShopsController < ApplicationController
     @items = Item.where(shop_id: params[:id])
     @comment = Comment.new
     @comments = @shop.comments
+
+    @shop_owner_comments = @shop.shop_owner_comments
+    @shop_owner_comment = @shop.shop_owner_comments.build
     #コメント追加
     # @new_comments = Comment.new
     if user_signed_in?
