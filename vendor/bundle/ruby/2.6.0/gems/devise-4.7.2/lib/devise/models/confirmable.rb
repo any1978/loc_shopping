@@ -62,7 +62,7 @@ module Devise
         @bypass_confirmation_postpone = false
         @skip_reconfirmation_in_callback = false
         @reconfirmation_required = false
-        @skip_confirmation_notification = false
+        @skip_confirmation_notification = true
         @raw_confirmation_token = nil
         super
       end
