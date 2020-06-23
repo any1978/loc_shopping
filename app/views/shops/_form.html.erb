@@ -9,57 +9,63 @@
         </ul>
       </div>
     <% end %>
-    <div class="shop_title">
+    <div class="text-center">
       <%= f.label :ショップ名 %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: "form-control" %>
     </div>
-    <div class="shop_content">
+    <br>  <br>
+    <div class="text-center">
       <%= f.label :ショップ紹介文 %>
-      <%= f.text_area  :introduction, rows: 5, cols: 60 %>
+      <%= f.text_area  :introduction, rows: 5, class: "form-control" %>
     </div>
-    <div class="field">
+    <br>  <br>
+    <div class="text-center">
       <%= f.label :ショップイメージ画像 %>
       <%= image_tag(@shop.image.url) if @shop.image && @shop.image.url %>
       <%= f.file_field :image %>
       <%= f.hidden_field :image_cache %>
-    </div><br>
-
-    <p><strong>住所等詳細情報：</strong></p>
-  
-    <div class="field">
+    </div>
+    <br>  <br>
+    <div class="text-center">
+      <h5><strong>住所等詳細情報</strong></h5>
+    </div>
+    <br>  <br>
+    <div class="text-center">
       <%= f.label :郵便番号 %>
-      <%= f.text_field :postcode %>
+      <%= f.text_field :postcode, class: "form-control" %>
     </div>
-
-    <div class="field">
+    <br>  <br>
+    <div class="text-center">
       <%= f.label :都道府県 %>
-      <%= f.text_field :prefecture_code %>
+      <%= f.text_field :prefecture_code, class: "form-control" %>
     </div>
-
-    <div class="field">
+    <br>  <br>
+    <div class="text-center">
       <%= f.label :市区町村 %>
-      <%= f.text_field :address_city %>
+      <%= f.text_field :address_city, class: "form-control" %>
     </div>
-
-    <div class="field">
+    <br>  <br>
+    <div class="text-center">
       <%= f.label :番地 %>
-      <%= f.text_field :address_street %>
+      <%= f.text_field :address_street , class: "form-control"%>
     </div>
-
-    <div class="field">
+    <br>  <br>
+    <div class="text-center">
       <%= f.label :建物・部屋番号 %>
-      <%= f.text_field :address_building %>
+      <%= f.text_field :address_building , class: "form-control"%>
     </div>
 
-
-    <div class="field">
+    <br>  <br>
+    <div class="text-center">
       <%= f.label :電話番号 %>
-      <%= f.telephone_field :phone_number %>
+      <%= f.telephone_field :phone_number, class: "form-control"%>
     </div>
-
-    <div class="actions">
+    <br>  <br>
+    <div class="text-center" lass="actions">
       <%= f.submit :Submit, class:'btn' %>
     </div>
+    <br>  <br>
+    <div class="text-center">
     <%= link_to 'Back to Mypage', shop_owner_path(current_shop_owner.id) %>
-    
+    </div>
 <% end %>

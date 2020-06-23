@@ -46,8 +46,11 @@
   <header>
 
 		<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-    <a class="navbar-brand" href="/">地元でお買い物</a>
-    <ul class="navbar-nav " >
+    <ul class="navbar-nav mr-auto" >
+      <a class="navbar-brand" href="/">地元でお買い物</a>
+    </ul>
+    
+    <ul class="navbar-nav">
       <% if user_signed_in? %> 
         <li class="nav-item">Logged in as : ユーザー　<%= current_user.first_name %></li>
         <li class="nav-item"><%= link_to 'アカウント情報変更', edit_user_registration_path %></li>
@@ -61,10 +64,10 @@
         <li class="nav-item"><%= link_to "ログアウト", destroy_shop_owner_session_path, method: :delete %></li>
       <% else %>
       <!-- ユーザーショップオーナーログインしてないとき表示 -->
-        <li class="nav-item navbar-light"><%= link_to "お買い物ログイン", new_user_session_path %></li>
-        <li class="nav-item"><%= link_to "オーナーログイン", new_shop_owner_session_path %></li>
+        <li class="nav-item navbar-light"><%= link_to "ユーザーログイン", new_user_session_path %></li>
+        <li class="nav-item"><%= link_to "ショップオーナーログイン", new_shop_owner_session_path %></li>
       <% end %>
-
+    </ul>
     </nav>
   </header>
 

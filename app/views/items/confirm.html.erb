@@ -1,4 +1,7 @@
-<h3>商品確認画面</h3>
+
+<div class="container" style="margin-top:90px">
+<h3><strong>商品確認画面</strong></h3>
+  <br>  <br>
 <%= form_with(model: [@shop, @item], url: shop_items_path, local: true,) do |form| %>
   <%= form.hidden_field :name %>
   <%= form.hidden_field :price %>
@@ -6,13 +9,19 @@
   <%= form.hidden_field :remark %>
   <%= form.hidden_field :image_cache %>
 
-  <p>商品名:<%= @item.name %></p>
-  <p>価格:<%= @item.name %>（税抜）</p>
-  <p>在庫数:<%= @item.stock %> 個</p>
-  <p>ショップ紹介文:<%= @item.remark %></p>
-  <p>ショップイメージ画像:<%= @item.image %></p>
-  <%= image_tag(@item.image.url) if @item.image && @item.image.url %>
-
-  <%= form.submit  "Submit", class:'btn'%><br>
+  <p class="text-center"><strong>商品名:</strong><%= @item.name %></p>
+  <p class="text-center"><strong>価格:</strong><%= @item.name %>（税抜）</p>
+  <p class="text-center"><strong>在庫数:</strong><%= @item.stock %> 個</p>
+  <p class="text-center"><strong>ショップ紹介文:</strong><%= @item.remark %></p>
+  <p class="text-center"><strong>ショップイメージ画像:</strong><%= @item.image %>
+  <br>  <br>
+    <%= image_tag(@item.image.url) if @item.image && @item.image.url %>
+  </p>
+  <div class="text-center">
+  <%= form.submit  "Submit", class:'btn'%>
+  </div>
+      <br>  <br>
+  <div class="text-center">
   <%= form.submit "戻る", name: 'back' %>
+  </div>
 <% end %>

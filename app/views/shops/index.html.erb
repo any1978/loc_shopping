@@ -1,21 +1,36 @@
-<div class="container-fluid" style="margin-top:80px">
+<div class="container" style="margin-top:80px">
 <% if current_user.try(:admin?) %>
-  <h3>周辺のお店を探してみる(admin）</h3>
+  <h3><strong>周辺のお店を探してみる(admin）</strong></h3>
 <% else %>
-  <h3>周辺のお店を探す</h3>
+  <h3><strong>周辺のお店を探す</strong></h3>
 <% end %>
+
+<br/><br/>
+
+<%= form_tag root_path, method: :get do %> 
+  <div class="input-group">
+    <%= text_field_tag :search, params[:search], placeholder: "地元のお店を探してみよう！（例）○○県○○市○○町", class: "form-control", id: "autolocation" %>
+  <span class="input-group-btn"><%= button_tag "検索", :name => nil, class: "btn btn-primary" %></span>
+  </div> 
+<% end %> 
+
 
 
 <br/>
-<%= form_tag root_path, method: :get do %> 
+
+ <%
+=begin%>
+ <%= form_tag root_path, method: :get do %> 
   <div>
-      <%= text_field_tag :search, params[:search], placeholder: "周辺のお店を探してみよう！（例）○○県○○市○○町", class: "form-control", id: "autolocation" %>
+      <%= text_field_tag :search, params[:search], placeholder: "地元のお店を探してみよう！（例）○○県○○市○○町", class: "form-control", id: "autolocation" %>
   </div> 
 
   <div>
     <%= submit_tag "検索する", class: "btn btn-normal " %>
   </div>
-<% end %> 
+<% end %>  
+<%
+=end%>
 
 <br/><hr/><br/>
 
@@ -31,8 +46,8 @@
         <th class = "subject" style="width:100px;">ショップ名</th>
         <th class = "subject" style="width:125px;">ショップイメージ</th>
         <th class = "subject" style="width:125px;">ショップオーナー</th>
-        <th class = "subject" style="width:300px;">紹介文</th>
-        <th class = "subject" style="width:150px;">住所</th>
+        <th class = "subject" style="width:250px;">紹介文</th>
+        <th class = "subject" style="width:175px;">住所</th>
         <th colspan="3"></th>
       </tr>
     <% @shops.each do |shop| %>
@@ -41,7 +56,7 @@
         <td><%= image_tag(shop.image.url, width: 200) if shop.image && shop.image.url %></td>
         <td><%= image_tag(shop.shop_owner.image.url, width: 200) if shop.shop_owner.image && shop.shop_owner.image.thumb.url %></td>
         <td><%= shop.introduction %></td>
-        <td><%= shop.address_city %></td>
+        <td><%= shop.address_city + shop.address_street %></td>
         <td ><%= link_to 'ショップを見る', shop_path(shop.id) %></td>
       </tr>
     <% end %>

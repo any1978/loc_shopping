@@ -1,3 +1,5 @@
+
+<div class="container" >
 <%= form_with(model: [@shop,@item], local: true ,url: choose_new_or_edit2 ) do |f| %>
     <% if @item.errors.any? %>
       <div id="error_explanation">
@@ -9,33 +11,39 @@
         </ul>
       </div>
     <% end %>
-    <div class="field">
-      <%= f.label :商品名 %>
-      <%= f.text_field :name %>
+    <div class="text-center">
+      <strong><%= f.label :商品名 %></strong>
+      <%= f.text_field :name, class: "form-control" %>
     </div>
-    <div class="field">
-      <%= f.label :価格 %>
-      <%= f.number_field :price %> 円（税抜）
+        <br>  <br>
+    <div class="text-center">
+      <strong><%= f.label :価格 %></strong>
+      <%= f.number_field :price, class: "form-control", placeholder: "円（税抜）"%>
     </div>
-    <div class="field">
-      <%= f.label :在庫数 %>
-      <%= f.number_field :stock %> 個
+        <br>  <br>
     </div>
-
-    <div class="field">
-      <%= f.label :商品紹介文 %>
-      <%= f.text_area  :remark, rows: 5, cols: 60 %>
+    <div class="text-center">
+      <strong><%= f.label :在庫数 %></strong>
+      <%= f.number_field :stock, class: "form-control", placeholder: "個"%>
     </div>
-    <div class="field">
-      <%= f.label :商品画像 %>
+    <br>  <br>
+    <div class="text-center">
+      <strong><%= f.label :商品紹介文 %></strong>
+      <%= f.text_area  :remark, rows: 3, class: "form-control" %>
+    </div>
+    <br>  <br>
+    <div class="text-center">
+      <strong><%= f.label :商品画像 %></strong>
       <%= image_tag(@item.image.url) if @item.image && @item.image.url %>
       <%= f.file_field :image %>
       <%= f.hidden_field :image_cache %>
-    </div><br>
-
-    <div class="actions">
+    </div>
+    <br>  <br>
+    <div class="text-center" class="actions">
       <%= f.submit :Submit, class:'btn' %>
     </div>
+      <br>  <br>
+    <div class="text-center">
     <%= link_to 'ショップページに戻る', shop_path(current_shop_owner.id) %>
-    
+    </div>  
 <% end %>

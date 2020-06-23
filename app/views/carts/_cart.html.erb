@@ -7,13 +7,13 @@
 <%
 =end%>
 
-	<h2>カートの内容</h2>
+	<h5><strong>カートの内容</strong></h5>
 
 	<table>
 		<tr>
-			<th>商品名（確認）</th>
-			<th>数量</th>
-			<th>価格</th>
+			<th style="width:50px;">商品名</th>
+			<th style="width:50px;">数量</th>
+			<th style="width:50px;">価格</th>
 		</tr>
 
 		<%= render(cart.cart_items) %>
@@ -25,6 +25,8 @@
 			</tr>
 		</tfoot>
 	</table>
+		<br/>
 	<%= button_to 'カートを空にする', cart_path(@cart, shop_id: @shop.id), method: :delete, data: { confirm: '本当によろしいですか？' } %>
+<br/>
 	<%= button_to '注文する', new_order_path, method: :get, class: "checkout" %>
 </article>

@@ -1,39 +1,45 @@
+
 <% if notice %>
 	<aside id="notice"><%= notice %></aside>
 <% end %>
 
-<h1>商品名：<%= @item.name %>の詳細ページ(item/show)</h1>
-<ul class="catalog">
-
-<p class = "subject">
-  商品画像:<br>
-  <%= image_tag(@item.image.url) if @item.image && @item.image.url %>
-</p>
-<p class = "subject">商品概要:</p>
-<%= @item.remark %><br>
-
-<p class = "subject">価格:<%= @item.price %> 円</p>
-
-<% if shop_owner_signed_in? %> 
-<p class = "subject">在庫:<%= @item.stock %> 個</p>
-<% end %> 
-
-<% if user_signed_in? %> 
-  <td><%= button_to 'カートに入れる', cart_items_path(shop_id: @shop.id, item_id: @item.id), method: :post, remote: true %></td>
-<% else %>
-  <td><%= link_to '編集する', edit_shop_item_path(@item.id),data: { confirm: '本当に編集していいですか？' }  %></td>
-  <td><%= link_to '削除する', shop_item_path(@item.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
-<% end %> 
+<div class="container" style="margin-top:80px">
+<div class="row">
+<div class="col-4">
+<div class="sidebar_content">
+<div sidebar_fixed>
 <br>
-<br>
-
 <div id="cart" class="carts">
   <%= render_if @cart && @cart.cart_items.any?, @cart %>
 </div>
+</div>
+</div>
+</div>
+<div class="col">
+  <h3><strong>商品名：<%= @item.name %></strong></h3>
+  <%= image_tag(@item.image.url) if @item.image && @item.image.url %>
+  <p class = "subject"><strong>商品概要：</strong></p>
+  <%= @item.remark %><br>
 
-<% if user_signed_in? %> 
-  <%= link_to '戻る', shop_path %>
-<% else %>
-  <%= link_to 'ショップページに戻る', shop_path(current_shop_owner.id) %>
-<% end %> 
-</ul>
+  <p class = "subject"><strong>価格:<%= @item.price %> 円</strong></p>
+
+  <% if shop_owner_signed_in? %> 
+  <p class = "subject">在庫:<%= @item.stock %> 個</p>
+  <% end %> 
+
+  <% if user_signed_in? %> 
+    <td><%= button_to 'カートに入れる', cart_items_path(shop_id: @shop.id, item_id: @item.id), method: :post, remote: true %></td>
+  <% elsif shop_owner_signed_in? %>
+    <td><%= link_to '編集する', edit_shop_item_path(@item.id),data: { confirm: '本当に編集していいですか？' }  %></td>
+    <td><%= link_to '削除する', shop_item_path(@item.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
+  <% end %> 
+  <br>
+  <br>
+
+
+  <% if user_signed_in? %> 
+    <%= link_to '戻る', shop_path %>
+  <% else %>
+    <%= link_to 'ショップページに戻る', shop_path(@shop.id) %>
+  <% end %> 
+</div>

@@ -4,10 +4,16 @@
 <%
 =end%>
 <div>
-  <strong>●店長からのメッセージ</strong>
+  <strong>●店長のメッセージ</strong>
 </div>
 
-<% ShopOwnerComment.all.order(created_at: :desc).each do |shop_owner_comment| %>
+ <%
+=begin%>
+ <% ShopOwnerComment.all.order(created_at: :desc).each do |shop_owner_comment| %>    
+<%
+=end%>
+
+  <% ShopOwnerComment.where(shop_id: params[:id]).all.order(created_at: :desc).each do |shop_owner_comment| %>
   <% if shop_owner_comment.id.present? %>
     <div class="show-shop_owner_comment show-box" id="shop_owner_comment_<%= shop_owner_comment.id %>">
       <div>

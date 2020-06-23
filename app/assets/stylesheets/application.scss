@@ -83,18 +83,20 @@ a:hover {
 // td {
 //   padding: 0 5px 7px; }
 
-// div.field,
-// div.actions {
-//   margin-bottom: 10px; }
+div.field,
+div.actions {
+  margin-bottom: 10px;
+  width: 300px;
+}
 
 // #notice {
 //   color: green; }
 
-// .field_with_errors {
-//   padding: 2px;
-//   background-color: #ff69b4;
-//   display: table;
-// }
+.field_with_errors {
+  padding: 2px;
+  background-color: #ff69b4;
+  display: table;
+}
 
 // #error_explanation {
 //   width: 450px;
@@ -122,8 +124,7 @@ a:hover {
 //   display: block; }
 
 .btn {
-  margin-top: 30px;
-  margin-bottom: 20px;
+
   display: inline-block;
   /* background-color: #3B5998; */
   padding: 0.3em 1em;
@@ -136,8 +137,8 @@ a:hover {
 }
 .rounded-circle {
   border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
-  width:  180px;       /* ※縦横を同値に */
-  height: 180px;       /* ※縦横を同値に */
+  width:  150px;       /* ※縦横を同値に */
+  height: 150px;       /* ※縦横を同値に */
   object-fit: cover;
 }
 

@@ -1,4 +1,6 @@
-<h3>確認画面</h3>
+<div class="container" style="margin-top:80px">
+<h4 class="text-center"><strong>確認画面</strong></h4>
+  <br>  <br>
 <%= form_with(model: @shop, url: shops_path, local: true,) do |form| %>
   <%= form.hidden_field :name %>
   <%= form.hidden_field :introduction %>
@@ -10,18 +12,24 @@
   <%= form.hidden_field :address_building %>
   <%= form.hidden_field :phone_number %>
 
-  <p>ショップ名:<%= @shop.name %></p>
-  <p>ショップ紹介文:<%= @shop.introduction %></p>
-  <p>ショップイメージ画像:<%= @shop.image %></p>
-  <%= image_tag(@shop.image.url) if @shop.image && @shop.image.url %>
-  <p>郵便番号:<%= @shop.postcode %></p>
-  <p>都道府県:<%= @shop.prefecture_code %></p>
-  <p>市区町村:<%= @shop.address_city %></p>
-  <p>番地:<%= @shop.address_street %></p>
-  <p>建物・部屋番号:<%= @shop.address_building %></p>
-  <p>電話番号:<%= @shop.phone_number %></p>
+  <p class="text-center"><strong>ショップ名:　</strong><%= @shop.name %></p>
+  <p class="text-center"><strong>ショップ紹介文:　</strong><%= @shop.introduction %></p>
+  <p class="text-center"><strong>ショップイメージ画像:　</strong><%= @shop.image %>
+  <br>  <br>
+    <%= image_tag(@shop.image.url) if @shop.image && @shop.image.url %>
+  </p>
+  <p class="text-center"><strong>郵便番号:　</strong><%= @shop.postcode %></p>
+  <p class="text-center"><strong>都道府県:　</strong><%= @shop.prefecture_code %></p>
+  <p class="text-center"><strong>市区町村:　</strong><%= @shop.address_city %></p>
+  <p class="text-center"><strong>番地:　</strong><%= @shop.address_street %></p>
+  <p class="text-center"><strong>建物・部屋番号:　</strong><%= @shop.address_building %></p>
+  <p class="text-center"><strong>電話番号:　</strong><%= @shop.phone_number %></p>
 
-
+  <div class="text-center">
   <%= form.submit  "Submit", class:'btn'%><br>
+  </div>
+    <br>  <br>
+  <div class="text-center">
   <%= form.submit "戻る", name: 'back' %>
+  </div>
 <% end %>

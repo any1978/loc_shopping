@@ -29,41 +29,51 @@
     <% if @favorite.present? %>
       <%= button_to 'お気に入り解除する', favorite_path(id: @favorite.id, shop_id: @shop.id ), method: :delete %>
     <% else %>
-      <%= button_to 'お気に入りする', favorites_path(shop_id: @shop.id), method: :post %>
+      <%= button_to 'お店をお気に入りに登録する', favorites_path(shop_id: @shop.id), method: :post %>
     <% end %>
   <% end %>
 </div>
+<br/><br/>
+<img src=<%= @shop.shop_owner.image %> class="rounded-circle">
+<br><br>
+<p>店長 <%= @shop.shop_owner.first_name %>さん</p>
+
 <% if shop_owner_signed_in? %>
   <%= link_to 'お店の情報を編集する', edit_shop_path %><br>
   <% end %>
 </div>
 
-<br/>
-  <h4><strong>質問コーナー</strong></h4>  
+<br/><br/>
+
+  <h5><strong>掲示板</strong></h5>  
   <div id="comments_area">
     <%= render partial: 'comments/index', locals: { comments: @comments } %>
   </div>  
   <% if user_signed_in? %>
     <%= render partial: 'comments/form', locals: { comment: @comment} %>
   <% end %>
+  <br/>
       <%= render partial: 'shop_owner_comments/index', locals: { shop_owner_comments: @shop_owner_comments, shop: @shop } %>
     <% if current_shop_owner == @shop.shop_owner %>
       <%= render partial: 'shop_owner_comments/form', locals: { shop_owner_comment: @shop_owner_comment, shop: @shop } %>
     <% end %>
+    <br/><br/>
+      <div id="cart" class="carts">
+    <%= render_if @cart && @cart.cart_items.any?, @cart %>
+  </div>
+  
   </div>
   <br/>
 
-<div>
-<div>
-
-<h2 class = "heading"><%= @shop.name %>の商品一覧</h2>
+<div class="col">
+<h3 class = "heading"><%= @shop.name %>の商品一覧</h3>
 <table class="table table-striped">
 <ul class="catalog">
   <tr>
-    <th class = "subject">商品名</th>
-    <th class = "subject">商品画像</th>
-    <th class = "subject">詳細</th>
-    <th class = "subject">価格(税抜）</th>
+    <th class = "subject" style="width:100px;">商品名</th>
+    <th class = "subject" style="width:150px;">商品画像</th>
+    <th class = "subject" style="width:150px;">詳細</th>
+    <th class = "subject" style="width:100px;">価格(税抜）</th>
     <th colspan="4"></th>
   </tr>
   <% @items.each do |item| %>
@@ -85,9 +95,7 @@
   <% end %>
 </ul>
 </table>
-  <div id="cart" class="carts">
-    <%= render_if @cart && @cart.cart_items.any?, @cart %>
-  </div>
+
 <br>
 
 <% if shop_owner_signed_in? %> 
