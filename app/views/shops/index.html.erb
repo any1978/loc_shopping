@@ -6,32 +6,47 @@
 <% end %>
 
 
-
- <%= form_tag root_path, method: :get do %> 
- <div>
-      <%= text_field_tag :search, params[:search], placeholder: "周辺のお店を検索してみよう！（例）○○県○○市○○町", class: "form-control", id: "autolocation" %>
+<br/>
+<%= form_tag root_path, method: :get do %> 
+  <div>
+      <%= text_field_tag :search, params[:search], placeholder: "周辺のお店を探してみよう！（例）○○県○○市○○町", class: "form-control", id: "autolocation" %>
   </div> 
 
   <div>
-    <%= submit_tag "検索", class: "btn btn-normal btn-block" %>
+    <%= submit_tag "検索する", class: "btn btn-normal " %>
   </div>
 <% end %> 
 
 <br/><hr/><br/>
 
-
-<h2>shop一覧</h2>
-  <div class="card-group" style="width:300px"> 
+<div id="main">
+<%
+=begin%>
+ <h2>shop一覧</h2> 
+<%
+=end%>
+  <div id="left">
+    <table class="table table-striped">
+      <tr>
+        <th class = "subject" style="width:100px;">ショップ名</th>
+        <th class = "subject" style="width:125px;">ショップイメージ</th>
+        <th class = "subject" style="width:125px;">ショップオーナー</th>
+        <th class = "subject" style="width:300px;">紹介文</th>
+        <th class = "subject" style="width:150px;">住所</th>
+        <th colspan="3"></th>
+      </tr>
     <% @shops.each do |shop| %>
-        <div class="card-img-top"><%= image_tag(shop.image.url) if shop.image && shop.image.url %></div>
-        <div class="card-body">
-          <h4 class="card-title"><%= shop.name %></h4>
-          <p class="card-text"><%= shop.introduction %></p>
-          <p class="btn" ><%= link_to 'ショップページを見る', shop_path(shop.id) %></p>
-        </div>
+      <tr>
+        <td><%= shop.name %></td>
+        <td><%= image_tag(shop.image.url, width: 200) if shop.image && shop.image.url %></td>
+        <td><%= image_tag(shop.shop_owner.image.url, width: 200) if shop.shop_owner.image && shop.shop_owner.image.thumb.url %></td>
+        <td><%= shop.introduction %></td>
+        <td><%= shop.address_city %></td>
+        <td ><%= link_to 'ショップを見る', shop_path(shop.id) %></td>
+      </tr>
     <% end %>
+    </table>
   </div>
-
 <%
 =begin%>
  

@@ -132,8 +132,16 @@ a:hover {
   border: solid 2px rgb(66, 138, 231);
   border-radius: 3px;
   transition: .4s;
-  margin-left: 30px;
+  margin-left: 0px;
 }
+.rounded-circle {
+  border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+  width:  180px;       /* ※縦横を同値に */
+  height: 180px;       /* ※縦横を同値に */
+  object-fit: cover;
+}
+
+
 
 // // .notice, #notice {
 // // 	background: #ffb;

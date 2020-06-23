@@ -9,6 +9,30 @@
 // // 	color: #7172ac;
 // // }
 
+.side_menu{
+  width: 300px;
+  float: right;
+}
+
+.image_area{
+  width:  300px;       /* ※縦横を同値に */
+  height: 1000px;       /* ※縦横を同値に */
+  object-fit: cover;
+}
+.wrapper{
+  margin-top: 10px;
+  padding-bottom: 100px;　/* wrapper*/
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.jumbotron {
+  padding: 6rem 2rem;
+}
 // h1 {
 // 	position: relative;
 // 	color: #333333;

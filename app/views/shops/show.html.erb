@@ -6,13 +6,25 @@
 <%
 =end%>
 
+<div class="jumbotron text-center">
 
-<h1><%= @shop.name %>のショップページ（shop/show)</h1>
+    <br>
+    <h1><%= @shop.name %>のショップページ</h1>
+    <br>
+    <%
+=begin%>
+ <%= image_tag(@shop.image.url) if @shop.image && @shop.image.url %> 
+<%
+=end%>
+    <img src=<%= @shop.image %> class="image_area">
 
-<div class="shop-image">
-  <%= image_tag(@shop.image.url(:thumb)) if @shop.image && @shop.image.url %>
 </div>
-<div>
+
+<div class="container">
+<div class="row">
+<div class="col-3">
+<div class="sidebar_content">
+<div sidebar_fixed>
   <% if user_signed_in? %>
     <% if @favorite.present? %>
       <%= button_to 'お気に入り解除する', favorite_path(id: @favorite.id, shop_id: @shop.id ), method: :delete %>
@@ -21,8 +33,9 @@
     <% end %>
   <% end %>
 </div>
-<div>
+<% if shop_owner_signed_in? %>
   <%= link_to 'お店の情報を編集する', edit_shop_path %><br>
+  <% end %>
 </div>
 
 <br/>
@@ -33,15 +46,15 @@
   <% if user_signed_in? %>
     <%= render partial: 'comments/form', locals: { comment: @comment} %>
   <% end %>
-  </div>
-   <br/>
-  <div id="shop_owner_comments_area">
-    <%= render partial: 'shop_owner_comments/index', locals: { shop_owner_comments: @shop_owner_comments, shop: @shop } %>
+      <%= render partial: 'shop_owner_comments/index', locals: { shop_owner_comments: @shop_owner_comments, shop: @shop } %>
     <% if current_shop_owner == @shop.shop_owner %>
       <%= render partial: 'shop_owner_comments/form', locals: { shop_owner_comment: @shop_owner_comment, shop: @shop } %>
     <% end %>
-  <div>
+  </div>
+  <br/>
 
+<div>
+<div>
 
 <h2 class = "heading"><%= @shop.name %>の商品一覧</h2>
 <table class="table table-striped">
@@ -56,7 +69,7 @@
   <% @items.each do |item| %>
     <tr>
       <td><%= item.name %></td>
-      <td><%= image_tag(item.image.url, width: 140) if item.image && item.image.url %></td>
+      <td><%= image_tag(item.image.url, width: 200) if item.image && item.image.url %></td>
       <td><%= item.remark %></td> 
       <td><%= item.price %><span> 円</span></td> 
       <td><%= link_to '詳細を見る', shop_item_path(@shop.id, item.id) %></td>

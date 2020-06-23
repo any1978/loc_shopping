@@ -1,35 +1,39 @@
-<h1><%= current_shop_owner.first_name %>さんの 管理ページ(shop_owner/show)</h1>
+<h1><%= current_shop_owner.first_name %>さんの 管理ページ</h1>
 
 <%
 =begin%>
- <div class="user-image">
-  <%= image_tag(current_shop_owner.image.url) if current_shop_owner.image && current_shop_owner.image.url  %>
-</div> 
+ 
+ <div >
+  <%= image_tag(current_shop_owner.image.url, width: 140) if current_shop_owner.image && current_shop_owner.image.url  %>
+</div>  
 <%
 =end%>
 
-<div class="user-image">
-  <img src=<%= current_shop_owner.image %> class =  "img-circle avatar-large">
-</div>
+
+ <div class="user-image">
+  <img src=<%= current_shop_owner.image %> class="rounded-circle">
+</div> 
+
+<br>
 
 <div>
   <%= link_to 'アカウントを編集する', edit_shop_owner_registration_path %><br>
 </div>
 
-
+<br><br>
 <h2 class = "heading">店舗一覧</h2>
 <%# <p id="notice"><%= notice %></p> 
 <table class="table table-striped">
   <tr>
-    <th class = "subject">店舗名</th>
-    <th class = "subject">店舗画像</th>
-    <th class = "subject">詳細</th>
+    <th class = "subject"  style="width:150px;">ショップ名</th>
+    <th class = "subject" style="width:150px;">ショップイメージ</th>
+    <th class = "subject" style="width:500px;">詳細</th>
     <th colspan="4"></th>
   </tr>
   <% @shops.each do |shop| %>
     <tr>
       <td><%= shop.name %></td>
-      <td><%= image_tag shop.image.thumb.url if shop.image && shop.image.url %></td>
+      <td><%= image_tag shop.image.url if shop.image && shop.image.url %></td>
       <td><%= shop.introduction %></td>
       <td><%= link_to '詳細を見る', shop_path(shop.id) %></td>
       <td><%= link_to '編集する', edit_shop_path(shop.id),data: { confirm: '本当に編集していいですか？' }  %></td>
