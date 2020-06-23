@@ -56,4 +56,4 @@ gem 'faker'
 gem 'json', '~> 2.2'
 gem 'enum_help'
 gem 'rails_12factor', group: :production
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
