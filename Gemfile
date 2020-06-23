@@ -19,6 +19,13 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'pry-doc'
+  gem 'rspec-rails', '~> 4.0.0'
+  gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+  gem 'spring'
+  gem 'faker'
+  gem 'launchy'
 end
 
 group :development do
@@ -31,8 +38,8 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  # gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
