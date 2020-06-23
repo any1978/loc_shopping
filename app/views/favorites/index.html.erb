@@ -20,7 +20,7 @@
     <td><%= favorite.shop.name %></td>
     <td><%= image_tag(favorite.shop.image.url) if favorite.shop.image && favorite.shop.image.url %></td>
     <td><%= favorite.shop.introduction %></td>
-    <td><%= favorite.shop.address_city %></td>
+    <td><%= favorite.shop.address_city + favorite.shop.address_street%></td>
     <td ><%= link_to '店内を見る', shop_path(favorite.shop.id) %></td>
   </tr>
   <% end %>

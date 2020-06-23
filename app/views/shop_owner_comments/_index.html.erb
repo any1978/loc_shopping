@@ -3,9 +3,6 @@
  <%= render 'layouts/flash' %> 
 <%
 =end%>
-<div>
-  <strong>●店長のメッセージ</strong>
-</div>
 
  <%
 =begin%>
@@ -15,6 +12,9 @@
 
   <% ShopOwnerComment.where(shop_id: params[:id]).all.order(created_at: :desc).each do |shop_owner_comment| %>
   <% if shop_owner_comment.id.present? %>
+  <div>
+  <strong>●店長のメッセージ</strong>
+</div>
     <div class="show-shop_owner_comment show-box" id="shop_owner_comment_<%= shop_owner_comment.id %>">
       <div>
       </div>
