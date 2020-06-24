@@ -2,11 +2,10 @@
   <% if order.errors.any? %>
     <div id="error_explanation2">
       <h2><%= pluralize(order.errors.count, "error") %> この注文の保存ができません。</h2>
-
       <ul>
-        <% order.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
       </ul>
     </div>
   <% end %>
@@ -15,27 +14,27 @@
     <%= form.label :氏名 %>
     <%= form.text_field :name, class: "form-control" %>
   </div>
-    <br>  <br>
+  <br>  <br>
   <div class="text-center">
     <%= form.label :住所 %>
     <%= form.text_field :address, rows: 3, class: "form-control" %>
   </div>
-    <br>  <br>
+  <br>  <br>
   <div class="text-center">
     <%= form.label :phone_number %>
     <%= form.text_field :phone_number, class: "form-control" %>
   </div>
-      <br>  <br>
+  <br>  <br>
   <div class="text-center">
     <%= form.label :email %>
     <%= form.text_field :email, class: "form-control" %>
   </div> 
-    <br>  <br>
+  <br>  <br>
   <div class="text-center">
     <%= form.label :支払い方法　 %>
     <%= form.select :payment_method, Order.payment_methods.keys, prompt: '支払い方法を選択してください。',class: "form-control" %>
   </div>
-    <br>  <br>
+  <br>  <br>
 
   <div class="text-center" class="actions">
     <%= form.submit '注文を確定する' %>

@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   has_many :cart_items, dependent: :destroy
-
+	# belongs_to :users
+	# belongs_to :shops
 	enum payment_method: {
 		"代金引換" => 0,
 		"クレジットカード" => 1

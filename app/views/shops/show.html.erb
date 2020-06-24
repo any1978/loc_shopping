@@ -7,102 +7,97 @@
 =end%>
 
 <div class="jumbotron text-center">
-
-    <br>
-    <h1><%= @shop.name %>のショップページ</h1>
-    <br>
+  <br>
+  <h1><%= @shop.name %>のショップページ</h1>
+  <br>
     <%
 =begin%>
  <%= image_tag(@shop.image.url) if @shop.image && @shop.image.url %> 
 <%
 =end%>
-    <img src=<%= @shop.image %> class="">
-
+  <img src=<%= @shop.image %> >
 </div>
 
 <div class="container">
-<div class="row">
-<div class="col-3">
-<div class="sidebar_content">
-<div sidebar_fixed>
-  <% if user_signed_in? %>
-    <% if @favorite.present? %>
-      <%= button_to 'お気に入り解除する', favorite_path(id: @favorite.id, shop_id: @shop.id ), method: :delete %>
-    <% else %>
-      <%= button_to 'お店をお気に入りに登録する', favorites_path(shop_id: @shop.id), method: :post %>
-    <% end %>
-  <% end %>
-</div>
-<br/><br/>
-<img src=<%= @shop.shop_owner.image %> class="rounded-circle">
-<br><br>
-<p>店長 <%= @shop.shop_owner.first_name %>さん</p>
+  <div class="row">
+    <div class="col-3">
+      <div class="sidebar_content">
+        <div sidebar_fixed>
+          <% if user_signed_in? %>
+            <% if @favorite.present? %>
+              <%= button_to 'お気に入り解除する', favorite_path(id: @favorite.id, shop_id: @shop.id ), method: :delete %>
+            <% else %>
+              <%= button_to 'お店をお気に入りに登録する', favorites_path(shop_id: @shop.id), method: :post %>
+            <% end %>
+          <% end %>
+        </div>
+        <br/><br/>
+        <img src=<%= @shop.shop_owner.image %> class="rounded-circle">
+        <br><br>
+        <p>店長 <%= @shop.shop_owner.first_name %>さん</p>
 
-<% if shop_owner_signed_in? %>
-  <%= link_to 'お店の情報を編集する', edit_shop_path %><br>
-  <% end %>
-</div>
+        <% if shop_owner_signed_in? %>
+          <%= link_to 'お店の情報を編集する', edit_shop_path %><br>
+        <% end %>
+      </div>
+      <br/><br/>
 
-<br/><br/>
-
-  <h5><strong>掲示板</strong></h5>  
-  <div id="comments_area">
-    <%= render partial: 'comments/index', locals: { comments: @comments } %>
-  </div>  
-  <% if user_signed_in? %>
-    <%= render partial: 'comments/form', locals: { comment: @comment} %>
-  <% end %>
-  <br/>
+      <h5><strong>掲示板</strong></h5> 
+      <div id="comments_area">
+        <%= render partial: 'comments/index', locals: { comments: @comments } %>
+      </div>  
+      <% if user_signed_in? %>
+        <%= render partial: 'comments/form', locals: { comment: @comment} %>
+      <% end %>
+      <br/>
       <%= render partial: 'shop_owner_comments/index', locals: { shop_owner_comments: @shop_owner_comments, shop: @shop } %>
-    <% if current_shop_owner == @shop.shop_owner %>
-      <%= render partial: 'shop_owner_comments/form', locals: { shop_owner_comment: @shop_owner_comment, shop: @shop } %>
-    <% end %>
-    <br/><br/>
+      <% if current_shop_owner == @shop.shop_owner %>
+        <%= render partial: 'shop_owner_comments/form', locals: { shop_owner_comment: @shop_owner_comment, shop: @shop } %>
+      <% end %>
+      <br/><br/>
       <div id="cart" class="carts">
-    <%= render_if @cart && @cart.cart_items.any?, @cart %>
-  </div>
-  
-  </div>
-  <br/>
+        <%= render_if @cart && @cart.cart_items.any?, @cart %>
+      </div>
+    </div>
+    <br/>
 
-<div class="col">
-<h3 class = "heading"><%= @shop.name %>の商品一覧</h3>
-<table class="table table-striped">
-<ul class="catalog">
-  <tr>
-    <th class = "subject" style="width:100px;">商品名</th>
-    <th class = "subject" style="width:150px;">商品画像</th>
-    <th class = "subject" style="width:150px;">詳細</th>
-    <th class = "subject" style="width:100px;">価格(税抜）</th>
-    <th colspan="4"></th>
-  </tr>
-  <% @items.each do |item| %>
-    <tr>
-      <td><%= item.name %></td>
-      <td><%= image_tag(item.image.url, width: 200) if item.image && item.image.url %></td>
-      <td><%= item.remark %></td> 
-      <td><%= item.price %><span> 円</span></td> 
-      <td><%= link_to '詳細を見る', shop_item_path(@shop.id, item.id) %></td>
-      <% if user_signed_in? %> 
-        <td><%= button_to 'カートに入れる', cart_items_path(shop_id: @shop.id, item_id: item.id), method: :post, remote: true %></td>
-      <% elsif shop_owner_signed_in? %>
-        <td><%= link_to '編集する', edit_shop_item_path(@shop.id, item.id),data: { confirm: '本当に編集していいですか？' }  %></td>
-        <td><%= link_to '削除する', shop_item_path(@shop.id, item.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
-      <% else %>
-        <td><%= link_to 'カートに入れる', new_user_session_path %></td>
+    <div class="col">
+      <h3 class = "heading"><%= @shop.name %>の商品一覧</h3>
+      <table class="table table-striped">
+        <tr>
+          <th class = "subject" style="width:100px;">商品名</th>
+          <th class = "subject" style="width:150px;">商品画像</th>
+          <th class = "subject" style="width:150px;">詳細</th>
+          <th class = "subject" style="width:100px;">価格(税抜）</th>
+          <th colspan="4"></th>
+        </tr>
+        <% @items.each do |item| %>
+        <tr>
+          <td><%= item.name %></td>
+          <td><%= image_tag(item.image.url, width: 200) if item.image && item.image.url %></td>
+          <td><%= item.remark %></td> 
+          <td><%= item.price %><span> 円</span></td> 
+          <td><%= link_to '詳細を見る', shop_item_path(@shop.id, item.id) %></td>
+
+          <% if user_signed_in? %> 
+            <td><%= button_to 'カートに入れる', cart_items_path(shop_id: @shop.id, item_id: item.id), method: :post, remote: true %></td>
+          <% elsif shop_owner_signed_in? %>
+            <td><%= link_to '編集する', edit_shop_item_path(@shop.id, item.id),data: { confirm: '本当に編集していいですか？' }  %></td>
+            <td><%= link_to '削除する', shop_item_path(@shop.id, item.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
+          <% else %>
+            <td><%= link_to 'カートに入れる', new_user_session_path %></td>
+          <% end %> 
+        </tr>
+      <% end %>
+      </table>
+      <br>
+      <% if shop_owner_signed_in? %> 
+        <%= link_to '商品を登録する', new_shop_item_path(shop_id: @shop.id), class:"btn" %>
+        <br><br>
+        <%= link_to 'Back to Mypage', shop_owner_path(current_shop_owner.id) %>
       <% end %> 
-    </tr>
-  <% end %>
-</ul>
-</table>
-
-<br>
-
-<% if shop_owner_signed_in? %> 
-  <%= link_to '商品を登録する', new_shop_item_path(shop_id: @shop.id), class:"btn" %>
-  <br>
-  <br>
-  <%= link_to 'Back to Mypage', shop_owner_path(current_shop_owner.id) %>
-<% end %> 
-<br>
-<%= link_to 'トップページに戻る', shops_path %>
+      <br>
+      <%= link_to 'トップページに戻る', shops_path %>
+    </div>
+  </div>
+</div>

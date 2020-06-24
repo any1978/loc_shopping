@@ -21,7 +21,6 @@
       <%= f.number_field :price, class: "form-control", placeholder: "円（税抜）"%>
     </div>
         <br>  <br>
-    </div>
     <div class="text-center">
       <strong><%= f.label :在庫数 %></strong>
       <%= f.number_field :stock, class: "form-control", placeholder: "個"%>
@@ -39,11 +38,12 @@
       <%= f.hidden_field :image_cache %>
     </div>
     <br>  <br>
-    <div class="text-center" class="actions">
-      <%= f.submit :Submit, class:'btn' %>
+    <div class="text-center" class="actions" >
+      <%= f.submit :登録する, class:'btn' %>
     </div>
       <br>  <br>
     <div class="text-center">
     <%= link_to 'ショップページに戻る', shop_path(current_shop_owner.id) %>
     </div>  
 <% end %>
+    </div>  

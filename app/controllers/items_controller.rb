@@ -30,6 +30,7 @@ class ItemsController < ApplicationController
   end
 
   def confirm
+
     @shop = Shop.find(params[:shop_id])
     @item = @shop.items.build(item_params)
     render :new if @item.invalid?
@@ -73,7 +74,6 @@ class ItemsController < ApplicationController
 
   def set_item
     @shop = Shop.find(params[:shop_id])
-    # binding.pry
     @item = Item.find(params[:id])
     # @item = @shop.item.find(params[:id])
     # @item = Item.where(shop_id: params[:id])
@@ -81,7 +81,7 @@ class ItemsController < ApplicationController
 
   def item_params
     # binding.pry
-    params.require(:item).permit(:shop_id, :name, :price, :stock, :remark, :image, :image_cache, :remove_image)
+    params.require(:item).permit(:item_id, :shop_id, :name, :price, :stock, :remark, :image, :image_cache, :remove_image)
   end
 
 end

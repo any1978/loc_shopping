@@ -139,6 +139,7 @@ class ShopsController < ApplicationController
   end
 
   def set_shop
+    # binding.pry
     @shop = Shop.find(params[:id])
   end
 
