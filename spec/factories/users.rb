@@ -5,6 +5,8 @@ FactoryBot.define do
     last_name { 'sample1' }
     email { 'sample1@example.com' }
     password { '00000000' }
+    password { '1234567' }
+    
   end
 
   factory :second_user, class: User do

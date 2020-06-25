@@ -40,7 +40,7 @@
   <br> <br>
     <div class="text-center">
       <%= f.label :prefecture_code %><br />
-      <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :name, :name, { prompt: '選択してください' }, class: "address", id: "address_prefecture_name" , class: "form-control"%>
+      <%= f.text_field :prefecture_code, autocomplete: "prefecture_code", class: "address", id: "prefecture_code", class: "form-control"%>
     </div>
   <br>  <br>
     <div class="text-center">
