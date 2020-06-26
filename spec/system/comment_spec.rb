@@ -17,12 +17,24 @@ RSpec.describe '商品登録・編集・削除機能', type: :feature do
   end
 
   describe 'コメント投稿のテスト' do
+    # render_views
     context 'ユーザーがログインしている場合' do
       it 'コメントを投稿できる' do
         visit shops_path
         click_link 'ショップを見る'
-        click_on 'お店をお気に入りに登録する'
-        expect(page).to have_content "sample1をお気に入り登録しました"
+        fill_in 'comment[content]', with: 'こんにちは'
+        click_on 'commit'
+        visit shop_path(@shop1.id)
+        expect(page).to have_content "さんのメッセージ"
+      end
+      it 'コメントを削除できる' do
+        visit shops_path
+        click_link 'ショップを見る'
+        fill_in 'comment[content]', with: 'こんにちは'
+        click_on 'commit'
+        visit shop_path(@shop1.id)
+        first(:css, ".delete_link").click
+        expect(page).to have_content "sample1"
       end
     end
   end

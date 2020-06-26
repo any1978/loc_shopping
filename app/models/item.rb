@@ -12,7 +12,7 @@ class Item < ApplicationRecord
 
   validates :name, :remark, presence: true
   validates :price, numericality: {greater_than_or_equal_to: 1}
-  # validates :stock, numericality: {greater_than_or_equal_to: 1}
+  validates :stock, presence: true, presence: true, numericality: {greater_than_or_equal_to: 1}
 
   # validates :image_url, allow_blank: true, format: {
 	# 	with: %r{\.(gif|jpg|png)\z}i,

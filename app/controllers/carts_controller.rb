@@ -56,7 +56,7 @@ class CartsController < ApplicationController
   # DELETE /carts/1.json
   def destroy
     # @shop = Shop.find(params[:id])
-    binding.pry
+    # binding.pry
     # @shop = Shop.find(params[:shop_id])
     @cart.destroy if @cart.id == session[:cart_id]
     session[:cart_id] = nil

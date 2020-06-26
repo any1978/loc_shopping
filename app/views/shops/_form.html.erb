@@ -32,22 +32,22 @@
     <br>  <br>
     <div class="text-center">
       <%= f.label :郵便番号 %>
-      <%= f.text_field :postcode, class: "form-control" %>
+      <%= f.text_field :postcode, placeholder: "半角ハイフンなし", class: "form-control" %>
     </div>
     <br>  <br>
     <div class="text-center">
       <%= f.label :都道府県 %>
-      <%= f.text_field :prefecture_code, class: "form-control" %>
+      <%= f.text_field :prefecture_code, placeholder: "（例）○○県", class: "form-control" %>
     </div>
     <br>  <br>
     <div class="text-center">
       <%= f.label :市区町村 %>
-      <%= f.text_field :address_city, class: "form-control" %>
+      <%= f.text_field :address_city, placeholder: "（例）○○市○○町", class: "form-control" %>
     </div>
     <br>  <br>
     <div class="text-center">
       <%= f.label :番地 %>
-      <%= f.text_field :address_street , class: "form-control"%>
+      <%= f.text_field :address_street, placeholder: "半角数字", class: "form-control"%>
     </div>
     <br>  <br>
     <div class="text-center">
@@ -58,7 +58,7 @@
     <br>  <br>
     <div class="text-center">
       <%= f.label :電話番号 %>
-      <%= f.telephone_field :phone_number, class: "form-control"%>
+      <%= f.telephone_field :phone_number, placeholder: "半角ハイフンなし", class: "form-control"%>
     </div>
     <br>  <br>
     <div class="text-center" class="actions">

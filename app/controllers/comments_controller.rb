@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     if @comment.destroy
-      render :index
+      render :index, notice:"コメントを削除しました！"
     end
     # redirect_to "/products/#{@comment.product.id}"
   end

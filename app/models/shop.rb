@@ -5,7 +5,14 @@ class Shop < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
-  validates :name, presence: true
+  validates :name, presence: true, length: {maximum: 50}
+  validates :introduction, presence: true
+  validates :postcode, presence: true, format: { with: /\A\d{7}\z/ }
+  validates :prefecture_code, presence: true, format: { with: /\A[一-龥]+\z/ }
+  validates :address_city, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
+  validates :address_street, presence: true
+  validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
+  
   # has_one_attached :profile_image
   mount_uploader :image, ImagesUploader
   mount_uploader :profile_image, ImagesUploader

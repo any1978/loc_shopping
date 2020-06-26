@@ -40,12 +40,12 @@
   <br>  <br>
   <div class="text-center">
     <%= f.label :postal_code %><br />
-    <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" , class: "form-control"%>
+    <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode", placeholder: "ハイフンなし", class: "form-control"%>
   </div>
   <br>  <br>
   <div class="text-center">
     <%= f.label :prefecture %><br />
-    <%= f.text_field :prefecture_code, autofocus: true, autocomplete: "prefecture_code" , class: "form-control"%>
+    <%= f.text_field :prefecture_code, autofocus: true, autocomplete: "prefecture_code", placeholder: "（例）○○県", class: "form-control"%>
   </div>
   <br>  <br>
   <div class="text-center">
@@ -55,7 +55,7 @@
   <br>  <br>
   <div class="text-center">
     <%= f.label :address_street %><br />
-    <%= f.text_field :address_street, autofocus: true, autocomplete: "address_street" , class: "form-control"%>
+    <%= f.text_field :address_street, autofocus: true, autocomplete: "address_street", placeholder: "（例）○○市○○町", class: "form-control"%>
   </div>
   <br>  <br>
   <div class="text-center">
@@ -65,7 +65,7 @@
   <br>  <br>
   <div class="text-center">
     <%= f.label :phone_number %><br />
-    <%= f.telephone_field :phone_number, autofocus: true, autocomplete: "phone_number" , class: "form-control"%>
+    <%= f.telephone_field :phone_number, autofocus: true, autocomplete: "phone_number", placeholder: "半角ハイフンなし" , class: "form-control"%>
   </div>
   <br>  <br>
   <div class="text-center">
