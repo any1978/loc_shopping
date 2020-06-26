@@ -98,7 +98,7 @@ class ShopsController < ApplicationController
   def destroy
   # @shop = Shop.find(params[:id])
     @shop.destroy
-    redirect_to shop_owner_path(current_shop_owner.id), notice:"ブログを削除しました！"
+    redirect_to shop_owner_path(current_shop_owner.id), notice:"ショップを削除しました！"
   end
 
   def search

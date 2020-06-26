@@ -45,11 +45,11 @@ class ItemsController < ApplicationController
     # binding.pry
     respond_to do |format|
       if @item.update(item_params)
-        format.any { redirect_to shop_item_path, notice: '商品情報を更新しました。' }
+        format.any { redirect_to shop_path(@shop), notice: '商品情報を更新しました。' }
         format.json { render :show, status: :ok, location: @item }
 
-	@items = Item.all.order(:name)
-	ActionCable.server.broadcast 'items', html: render_to_string('shops/show', layout: false)
+        # @items = Item.all.order(:name)
+        # ActionCable.server.broadcast 'items', html: render_to_string('shops/show', layout: false)
 
       else
         format.any { render :edit }
