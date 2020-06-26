@@ -52,6 +52,7 @@ CSV.foreach('db/seeds/csv/shop_owner.csv', headers: true) do |row|
     id: row['id'],
     first_name: row['first_name'],
     last_name: row['last_name'],
+    image: File.open(row['image']),
     email: row['email'],
     password: row['password'],
     password_confirmation: row['password'],
@@ -64,6 +65,20 @@ CSV.foreach('db/seeds/csv/shop_owner.csv', headers: true) do |row|
   )
 end
 
+CSV.foreach('db/seeds/csv/shop.csv', headers: true) do |row|
+  Shop.create(
+    id: row['id'],
+    name: row['name'],
+    introduction: row['introduction'],
+    image: File.open(row['image']),
+    postcode: row['postcode'],
+    prefecture_code: row['prefecture_code'],
+    address_city: row['address_city'],
+    address_street: row['address_street'],
+    phone_number: row['phone_number'],
+    shop_owner_id: row['shop_owner_id']
+  )
+end
 
 
 
