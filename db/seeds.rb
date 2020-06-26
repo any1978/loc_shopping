@@ -6,28 +6,64 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# 20.times do |n|
-#   name = Faker::JapaneseMedia::DragonBall
-#   first_name = Faker::Name.last_name
-#   last_name = Faker::Name.first_name
-#   email = Faker::Internet.email
-#   postcode = Faker::Address.postcode
-#   prefecture_code = Faker::Address.state
-#   address_city = Faker::Address.city_prefix
-#   address_street = Faker::Address.state_abbr
-#   content = "Hogehoge"
-#   phone_number = Faker::PhoneNumber.phone_number
-#   password = Faker::Internet.password
+20.times do |n|
+  last_name = Faker::Name.last_name
+  first_name = Faker::Name.first_name
+  email = "example-#{n+1}@railstutorial.org"
+  password = "password"
+  postcode = Faker::Address.postcode
+  prefecture_code = Faker::Address.state
+  address_city = Faker::Address.city_prefix
+  address_street = Faker::Address.state_abbr
+  phone_number = Faker::PhoneNumber.phone_number
 
-  Shop.create(
-    name: "アイウエオ",
-    postcode: "12345678",
-    prefecture_code: "鹿児島県",
-    address_city: "鹿児島市吉野町",
-    address_street: "1-2-3",
-    phone_number: "09040071234",
-    introduction: "美味しい"
+  User.create!(first_name: first_name,
+              last_name: last_name,
+              email: email,
+              password: password,
+              password_confirmation: password,
+              prefecture_code: prefecture_code,
+              address_city: address_city,
+              address_street: address_street,
+              phone_number: phone_number,
   )
+end
+
+
+
+
+# 30.times do |n|
+#   name  = Faker::Name.name
+#   email = "example-#{n+1}@railstutorial.org"
+#   password = "password"
+#   User.create!(user_name:  name,
+#               email: email,
+#               password:              password,
+#               password_confirmation: password)
+# end
+
+# 20.times do |n|
+#   User.create!(
+#   name  = Faker::Name.name
+#   email = "example-#{n+1}@railstutorial.org"
+#   password = "password"
+#   User.create!(user_name:  name,
+#               email: email,
+#               password:              password,
+#               password_confirmation: password)
+# end
+
+
+
+  # Shop.create(
+  #   name: "アイウエオ",
+  #   postcode: "12345678",
+  #   prefecture_code: "鹿児島県",
+  #   address_city: "鹿児島市吉野町",
+  #   address_street: "1-2-3",
+  #   phone_number: "09040071234",
+  #   introduction: "美味しい"
+  # )
 # end
 
 # Item.delete_all

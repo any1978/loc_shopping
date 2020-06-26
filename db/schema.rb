@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_051759) do
 
   create_table "items", force: :cascade do |t|
     t.bigint "shop_id"
+    t.bigint "category_id"
     t.string "name", null: false
     t.integer "price", null: false
     t.text "remark", null: false
@@ -123,6 +124,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_051759) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["shop_id"], name: "index_items_on_shop_id"
   end
 
@@ -287,6 +289,7 @@ ActiveRecord::Schema.define(version: 2020_06_25_051759) do
   add_foreign_key "favorite_shops", "users"
   add_foreign_key "itemizes", "items"
   add_foreign_key "itemizes", "shops"
+  add_foreign_key "items", "categories"
   add_foreign_key "orders", "delivery_addresses"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "shops"
