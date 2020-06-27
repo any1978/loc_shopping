@@ -258,7 +258,6 @@ ActiveRecord::Schema.define(version: 2020_06_25_051759) do
     t.boolean "admin", default: false
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "phone_number", null: false
     t.integer "postcode", null: false
     t.string "prefecture_code", null: false
     t.string "address_city", null: false

@@ -48,10 +48,14 @@
     <%= f.text_field :address_building, autofocus: true, autocomplete: "address_building" %>
   </div>
 
-  <div class="field">
+  <%
+=begin%>
+ <div class="field">
     <%= f.label :phone_number %><br />
     <%= f.telephone_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-  </div>
+  </div> 
+<%
+=end%>
 
   <div class="field">
     <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />

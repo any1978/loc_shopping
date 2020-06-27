@@ -43,7 +43,7 @@ CSV.foreach('db/seeds/csv/user.csv', headers: true) do |row|
     prefecture_code: row['prefecture_code'],
     address_city: row['address_city'],
     address_street: row['address_street'],
-    phone_number: row['phone_number']
+    # phone_number: row['phone_number']
   )
 end
 

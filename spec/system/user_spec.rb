@@ -33,7 +33,7 @@ RSpec.describe 'ユーザ登録・ログイン・ログアウト機能', type: :
         fill_in 'user[address_city]', with: '鹿児島市吉野町'
         fill_in 'user[address_street]', with: '1-2-3'
         fill_in 'user[address_building]', with: 'sample'
-        fill_in 'user[phone_number]', with: '09012345678'
+        # fill_in 'user[phone_number]', with: '09012345678'
         click_on 'Sign up'
         # binding.pry
         expect(current_path).to eq shops_path

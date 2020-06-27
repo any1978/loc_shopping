@@ -20,10 +20,7 @@ class User < ApplicationRecord
   validates :prefecture_code, presence: true, format: { with: /\A[一-龥]+\z/ }
   validates :address_city, presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]/ }
   validates :address_street, presence: true
-  validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
-
-
-
+  # validates :phone_number, presence: true, format: { with: /\A\d{10,11}\z/ }
 
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
