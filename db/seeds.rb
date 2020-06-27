@@ -47,6 +47,7 @@ CSV.foreach('db/seeds/csv/user.csv', headers: true) do |row|
   )
 end
 
+puts "user作成完了"
 
 CSV.foreach('db/seeds/csv/shop_owner.csv', headers: true) do |row|
   ShopOwner.create(
@@ -66,8 +67,10 @@ CSV.foreach('db/seeds/csv/shop_owner.csv', headers: true) do |row|
   )
 end
 
+puts "shop_owner作成完了"
+
 CSV.foreach('db/seeds/csv/shop.csv', headers: true) do |row|
-  Shop.create(
+  shop = Shop.new(
     id: row['id'],
     name: row['name'],
     introduction: row['introduction'],
@@ -81,7 +84,11 @@ CSV.foreach('db/seeds/csv/shop.csv', headers: true) do |row|
     phone_number: row['phone_number'],
     shop_owner_id: row['shop_owner_id']
   )
+  shop.save
+  puts shop.errors
 end
+
+puts "shop作成完了"
 
 CSV.foreach('db/seeds/csv/item.csv', headers: true) do |row|
   Item.create(
@@ -95,6 +102,7 @@ CSV.foreach('db/seeds/csv/item.csv', headers: true) do |row|
   )
 end
 
+puts "item作成完了"
 
 
 # 30.times do |n|
