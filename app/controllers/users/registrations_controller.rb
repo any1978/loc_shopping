@@ -92,6 +92,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :postcode, :prefecture_code, :address_city, :address_street,
-                              :address_building, :address, :phone_number, :latitude, :longitude, :password, :password_confirmation, :message)
+                              :address_building, :address, :latitude, :longitude, :password, :password_confirmation, :message)
   end
 end
