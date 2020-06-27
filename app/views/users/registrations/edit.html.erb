@@ -1,53 +1,67 @@
-<div class="container" style="margin-top:90px">
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
 
+<div class="container-sm" style="max-width:700px; margin-top:90px;" >
+<div class="container" style="margin-top:90px">
+<h2 class="text-center">ユーザー情報を編集する</h2>
+<br> <br>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
+<div class="row">
+  <div class="col-md-6">
     <%= f.label :first_name %><br />
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
   </div>
-
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :last_name %><br />
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
   </div>
-
-  <div class="field">
+</div>
+<br> <br>
+<div class="row">
+  <div class="col">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
   </div>
+</div>
+<br> <br>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
-    <div class="field">
-    <%= f.label :postal_code %><br />
-    <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode" %>
+<div class="row">
+  <div class="col-md-6">
+    <%= f.label :postcode %><br />
+    <%= f.text_field :postcode, autofocus: true, autocomplete: "postcode", class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :prefecture %><br />
-    <%= f.text_field :prefecture_code, autofocus: true, autocomplete: "prefecture_code" %>
+  <div class="col-md-6">
+    <%= f.label :prefecture_code %><br />
+    <%= f.text_field :prefecture_code, autofocus: true, autocomplete: "prefecture_code", class: "form-control" %>
   </div>
+  </div>
+<br> <br>
 
-  <div class="field">
+<div class="row">
+  <div class="col-md-6">
     <%= f.label :address_city %><br />
-    <%= f.text_field :address_city, autofocus: true, autocomplete: "address_city" %>
+    <%= f.text_field :address_city, autofocus: true, autocomplete: "address_city", class: "form-control" %>
   </div>
 
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :address_street %><br />
-    <%= f.text_field :address_street, autofocus: true, autocomplete: "address_street" %>
+    <%= f.text_field :address_street, autofocus: true, autocomplete: "address_street", class: "form-control" %>
   </div>
+</div>
+<br> <br>
 
-  <div class="field">
+<div class="row">
+  <div class="col">
     <%= f.label :address_building %><br />
-    <%= f.text_field :address_building, autofocus: true, autocomplete: "address_building" %>
-  </div>
-
+    <%= f.text_field :address_building, autofocus: true, autocomplete: "address_building", class: "form-control" %>
+  </div> 
+</div>
+<br> <br>
   <%
 =begin%>
  <div class="field">
@@ -57,32 +71,36 @@
 <%
 =end%>
 
-  <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+<div class="row">
+  <div class="col-md-6">
+    <%= f.label :password %> <i>(パスワードを変更する ※6桁以上)</i><br />
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+    
+    <br/><br/>
     <% if @minimum_password_length %>
-      <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
+      <em><%= @minimum_password_length %>桁以上</em>
     <% end %>
   </div>
 
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
   </div>
+</div>
 
-  <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+<div class="row">
+  <div class="col">
+    <%= f.label :current_password %><br />
+    <%= f.password_field :current_password, autocomplete: "current-password", class: "form-control" %>
   </div>
-
-  <div class="actions">
+</div>
+    <br/><br/>
+  <div class="text-center">
     <%= f.submit "Update" %>
   </div>
 <% end %>
+    <br/><br/>
 
-<h3>Cancel my account</h3>
-
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
-
-<%= link_to "Back", :back %>
+<div class="text-center"><%= button_to "ユーザー情報を削除する", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></div>
+<br/>
+<p  class="text-center"><%= link_to "Back", :back %></p>

@@ -1,28 +1,31 @@
-<div class="container" style="margin-top:90px">
-
+<div class="container-sm" style="max-width:700px; margin-top:90px;" >
   <h3 class="text-center"><strong>ユーザー登録画面</strong></h3>
-  <br> 
+  <br> <br>
   <p class="text-center">※お住まいの周辺のお店を自動的に表示させる仕様を検討中のため、お手数ですが住所の入力をお願いしております</p>
 <br> <br>
+<form>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="text-center">
-      <%= f.label :first_name %><br />
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :first_name %><br/>
       <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
     </div>
-  <br>
-    <div class="text-center">
+    <div class="col-md-6">
       <%= f.label :last_name %><br />
       <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
     </div>
-    <br>
-    <div class="text-center">
+  </div>
+
+    <br><br>
+    <div >
       <%= f.label :email %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
     </div>
-  <br>
-    <div class="text-center">
+  <br><br>
+  <div class="row">
+    <div class="col-md-6">
       <%= f.label :password %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -30,32 +33,37 @@
       <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
     </div>
   <br>
-    <div class="text-center">
+    <div class="col-md-6">
       <%= f.label :password_confirmation %><br />
       <%= f.password_field :password_confirmation, autocomplete: "new-password" , class: "form-control"%>
     </div>
-  <br>
-    <div class="text-center">
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-md-6">
       <%= f.label :postcode %><br />
       <%= f.text_field :postcode, autocomplete: "postcode",class: "postal_code", id: "address_zipcode", placeholder: "ハイフンなし", class: "form-control"%>
     </div>
   <br> <br>
-    <div class="text-center">
+    <div class="col-md-6">
       <%= f.label :prefecture_code %><br />
       <%= f.text_field :prefecture_code, autocomplete: "prefecture_code", class: "address", id: "prefecture_code", placeholder: "（例）○○県", class: "form-control"%>
     </div>
+  </div>
   <br>  <br>
-    <div class="text-center">
+  <div class="row">
+    <div class="col-md-6">
       <%= f.label :address_city %><br />
       <%= f.text_field :address_city, autocomplete: "address_city", class: "address", id: "address_city", placeholder: "（例）○○市○○町", class: "form-control" %>
     </div>
   <br>  <br>
-    <div class="text-center">
+    <div class="col-md-6">
       <%= f.label :address_street %><br />
       <%= f.text_field :address_street, autocomplete: "address_street", class: "address", id: "address_street", placeholder: "半角数字", class: "form-control"%>
     </div>
+  </div>
   <br>  <br>
-    <div class="text-center">
+    <div>
       <%= f.label :address_building %><br />
       <%= f.text_field :address_building, autocomplete: "address_building" , class: "form-control"%>
     </div>
@@ -70,6 +78,7 @@
 <%
 =end%>
 
+  </form>
 
     <div class="text-center" class="actions">
       <%= f.submit "Sign up" %>
@@ -77,6 +86,6 @@
   <% end %>
     <br>
   <div class="text-center" class="actions"> 
-  <%= render "users/shared/links" %>
+    <%= render "users/shared/links" %>
   </div>
 </div>

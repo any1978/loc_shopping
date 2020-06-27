@@ -52,12 +52,12 @@
     
     <ul class="navbar-nav">
       <% if user_signed_in? %> 
-        <li class="nav-item">Logged in as : ユーザー　<%= current_user.first_name %></li>
+        <li class="nav-item">Logged in as : ユーザー　<%= current_user.first_name %>さん</li>
         <li class="nav-item"><%= link_to 'アカウント情報変更', edit_user_registration_path %></li>
         <li class="nav-item"><%= link_to "お気に入りのお店一覧を見る", favorites_path, method: :get %></li>
         <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
       <% elsif shop_owner_signed_in? %>
-        <li class="nav-item">Logged in as : ショップオーナー <%= current_shop_owner.email %></li>
+        <li class="nav-item">Logged in as : ショップオーナー <%= current_shop_owner.email %>さん</li>
         <li class="nav-item"><%= link_to "マイページに行く", shop_owner_path(current_shop_owner.id) %></li>
         <li class="nav-item"><%= link_to "店舗情報作成", new_shop_path %></li>
         <li class="nav-item"><%= link_to 'アカウント情報変更', edit_shop_owner_registration_path %></li>

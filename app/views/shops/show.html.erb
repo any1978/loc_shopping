@@ -6,16 +6,20 @@
 
 <div class="jumbotron text-center">
   <br>
-  <h1><%= @shop.name %>のショップページ</h1>
+  <h1><%= @shop.name %></h1>
   <br>
     <%
 =begin%>
  <%= image_tag(@shop.image.url) if @shop.image && @shop.image.url %> 
 <%
 =end%>
-  <img src=<%= @shop.image %> >
+  <%
+=begin%>
+ <img src=<%= @shop.image %>> 
+<%
+=end%>
 </div>
-
+<br/><br/>
 <div class="container">
   <div class="row">
     <div class="col-3">

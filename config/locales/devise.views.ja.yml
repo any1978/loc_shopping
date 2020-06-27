@@ -41,6 +41,16 @@ ja:
         current_sign_in_at: 現在のログイン時刻
         current_sign_in_ip: 現在のログインIPアドレス
         email: Eメール
+        image: プロフィール画像
+        first_name: 名字
+        last_name: 名前
+        postcode: 郵便番号
+        prefecture_code: 都道府県名
+        address_city: 市区町村名
+        address_street: 番地
+        address_building: 建物名、部屋番号
+        phone_number: 電話番号
+        number_of_store: 所有しているショップ数
         encrypted_password: 暗号化パスワード
         failed_attempts: 失敗したログイン試行回数
         last_sign_in_at: 最終ログイン時刻

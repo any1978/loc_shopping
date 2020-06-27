@@ -8,7 +8,7 @@ class Item < ApplicationRecord
 
   validates :name, :remark, presence: true
   validates :price, numericality: {greater_than_or_equal_to: 1}
-  validates :stock, presence: true, presence: true, numericality: {greater_than_or_equal_to: 1}
+  validates :stock, presence: true, numericality: {greater_than_or_equal_to: 1}
 
   # validates :image_url, allow_blank: true, format: {
           # 	with: %r{\.(gif|jpg|png)\z}i,
@@ -18,11 +18,12 @@ class Item < ApplicationRecord
   mount_uploader :image, ImagesUploader
 
   private
-	# この商品を参照しているLineItemがないことを確認する
+
 	def ensure_not_referenced_by_any_cart_items
-		unless cart_items.empty?
-			errors.add(:base, '品目が存在します。')
-			throw :abort
-		end
-	end
+    unless cart_items.empty?
+      errors.add(:base, '品目が存在します。')
+      throw :abort
+    end
+  end
+
 end

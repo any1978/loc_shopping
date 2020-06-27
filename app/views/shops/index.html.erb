@@ -2,19 +2,20 @@
 
 <div class="container" style="margin-top:80px">
 <% if current_user.try(:admin?) %>
-  <h3><strong>周辺のお店を探してみる(admin）</strong></h3>
+  <h3><strong>周辺のお店を探す(admin）</strong></h3>
 <% else %>
   <h3><strong>周辺のお店を探す</strong></h3>
 <% end %>
 
 <br/><br/>
-
+<div class="col-md-8" style="padding: 0px;">
 <%= form_tag root_path, method: :get, enforce_utf8: false do %> 
   <div class="input-group">
     <%= text_field_tag :search, params[:search], placeholder: "地元のお店を探してみよう！（例）○○県○○市○○町", class: "form-control", id: "autolocation" %>
   <span class="input-group-btn"><%= button_tag "検索", :name => nil, class: "btn btn-primary" %></span>
   </div> 
 <% end %> 
+</div>
 
 
 
