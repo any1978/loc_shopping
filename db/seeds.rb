@@ -75,12 +75,24 @@ CSV.foreach('db/seeds/csv/shop.csv', headers: true) do |row|
     prefecture_code: row['prefecture_code'],
     address_city: row['address_city'],
     address_street: row['address_street'],
+    latitude: row['latitude'],
+    longitude: row['longitude'],
     phone_number: row['phone_number'],
     shop_owner_id: row['shop_owner_id']
   )
 end
 
-
+CSV.foreach('db/seeds/csv/item.csv', headers: true) do |row|
+  Item.create(
+    id: row['id'],
+    name: row['name'],
+    price: row['price'],
+    stock: row['stock'],
+    remark: row['remark'],
+    image: File.open(row['image']),
+    shop_id: row['shop_id']
+  )
+end
 
 # 30.times do |n|
 #   name  = Faker::Name.name
