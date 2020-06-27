@@ -1,19 +1,19 @@
 ﻿id,first_name,last_name,image,email,password,postcode,prefecture_code,address_city,address_street,phone_number,number_of_store
 1,相良,太郎,./public/images/staffpan3464607_s.jpg,owner1@test.com,testtest1,8913602,鹿児島県,鹿児島市吉野町,1 ,07095535485,1
 2,前野,涼子,./public/images/staffcake2755696_s.jpg,owner2@test.com,testtest2,8990133,鹿児島県,鹿児島市吉野町,2 ,07095535488,1
-3,宇野,悦子,./public/images/staffyaoya884989_s.jpg.crdownload,owner3@test.com,testtest3,8919112,鹿児島県,鹿児島市吉野町,3 ,07084926224,1
+3,宇野,悦子,./public/images/staffyaoya884989_s.jpg,owner3@test.com,testtest3,8919112,鹿児島県,鹿児島市吉野町,3 ,07084926224,1
 4,江原,淑子,./public/images/staff_fish_pixta_36739055_S.jpg,owner4@test.com,testtest4,8995412,鹿児島県,鹿児島市吉野町,4 ,07025834143,1
 5,北田,公平,./public/images/staff_sozai_pixta_54315942_S.jpg,owner5@test.com,testtest5,8920806,鹿児島県,鹿児島市吉野町,5 ,07067178467,1
 6,小川,勉,./public/images/staffmeet_pixta_32755445_S.jpg,owner6@test.com,testtest6,8912102,鹿児島県,鹿児島市吉野町,6 ,07090026189,1
 7,佐野,大介,./public/images/staffpan3464607_s.jpg,owner7@test.com,testtest7,8991629,鹿児島県,鹿児島市吉野町,7 ,07067422052,1
 8,池田,大,./public/images/staffcake2755696_s.jpg,owner8@test.com,testtest8,8991921,鹿児島県,鹿児島市吉野町,8 ,07034870345,1
-9,井上,祐太,./public/images/staffyaoya884989_s.jpg.crdownload,owner9@test.com,testtest9,8910102,鹿児島県,垂水市中俣,9 ,07034870345,1
+9,井上,祐太,./public/images/staffyaoya884989_s.jpg,owner9@test.com,testtest9,8910102,鹿児島県,垂水市中俣,9 ,07034870345,1
 10,石井,秀明,./public/images/staff_fish_pixta_36739055_S.jpg,owner10@test.com,testtest10,8914201,鹿児島県,阿久根市塩浜町,10 ,07057360500,1
 11,水野,一郎,./public/images/staff_sozai_pixta_54315942_S.jpg,owner11@test.com,testtest11,8913602,鹿児島県,薩摩川内市水引町,11 ,07059772921,1
 12,吉田,千明,./public/images/staffmeet_pixta_32755445_S.jpg,owner12@test.com,testtest12,8990133,鹿児島県,鹿児島市星ケ峯,12 ,07094875467,1
 13,鈴木,奈々子,./public/images/staffpan3464607_s.jpg,owner13@test.com,testtest13,8919112,鹿児島県,阿久根市塩鶴町,13 ,07092312319,1
 14,大野,麻衣子,./public/images/staffcake2755696_s.jpg,owner14@test.com,testtest14,8995412,鹿児島県,出水市汐見町,14 ,07060056170,1
-15,竹内,薫,./public/images/staffyaoya884989_s.jpg.crdownload,owner15@test.com,testtest15,8920806,鹿児島県,いちき串木野市港町,15 ,07060164623,1
+15,竹内,薫,./public/images/staffyaoya884989_s.jpg,owner15@test.com,testtest15,8920806,鹿児島県,いちき串木野市港町,15 ,07060164623,1
 16,岡田,有香,./public/images/staff_fish_pixta_36739055_S.jpg,owner16@test.com,testtest16,8912102,鹿児島県,垂水市本城,16 ,07084822784,1
 17,木下,朋美,./public/images/staff_sozai_pixta_54315942_S.jpg,owner17@test.com,testtest17,8991629,鹿児島県,志布志市有明町野井倉,17 ,07083972197,1
 18,渡辺,優美,./public/images/staffmeet_pixta_32755445_S.jpg,owner18@test.com,testtest18,8991921,鹿児島県,鹿児島郡十島村宝島,18 ,07086492345,1

@@ -30,6 +30,7 @@
 # end
 
 require "csv"
+
 CSV.foreach('db/seeds/csv/user.csv', headers: true) do |row|
   User.create(
     id: row['id'],
@@ -93,6 +94,8 @@ CSV.foreach('db/seeds/csv/item.csv', headers: true) do |row|
     shop_id: row['shop_id']
   )
 end
+
+
 
 # 30.times do |n|
 #   name  = Faker::Name.name
