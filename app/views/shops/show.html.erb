@@ -89,7 +89,7 @@
             <td><%= link_to '編集する', edit_shop_item_path(@shop.id, item.id),data: { confirm: '本当に編集していいですか？' }  %></td>
             <td><%= link_to '削除する', shop_item_path(@shop.id, item.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
           <% else %>
-            <td><%= link_to 'カートに入れる', new_user_session_path %></td>
+            <td><%= link_to new_user_session_path do%><i class="fas fa-shopping-cart fa-lg"></i><% end %></td>
           <% end %> 
         </tr>
       <% end %>
