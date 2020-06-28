@@ -3,7 +3,6 @@
   <br> <br>
   <p class="text-center">※お住まいの周辺のお店を自動的に表示させる仕様を検討中のため、お手数ですが住所の入力をお願いしております</p>
 <br> <br>
-<form>
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -77,8 +76,6 @@
   <br>  <br> 
 <%
 =end%>
-
-  </form>
 
     <div class="text-center" class="actions">
       <%= f.submit "Sign up", class:'btn' %>
