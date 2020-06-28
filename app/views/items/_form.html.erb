@@ -11,33 +11,39 @@
         </ul>
       </div>
     <% end %>
-    <div class="text-center">
-      <strong><%= f.label :商品名 %></strong>
+    <div>
+      <%= f.label :商品名 %>
       <%= f.text_field :name, class: "form-control" %>
     </div>
         <br>  <br>
-    <div class="text-center">
-      <strong><%= f.label :価格 %></strong>
+    <div class="row">
+      <div class="col-md-6">
+      <%= f.label :価格 %>
       <%= f.number_field :price, class: "form-control", placeholder: "円（税抜）"%>
     </div>
         <br>  <br>
-    <div class="text-center">
-      <strong><%= f.label :在庫数 %></strong>
+    <div class="col-md-6">
+      <%= f.label :在庫数 %>
       <%= f.number_field :stock, class: "form-control", placeholder: "個"%>
     </div>
+  </div>
     <br>  <br>
-    <div class="text-center">
-      <strong><%= f.label :商品紹介文 %></strong>
+    <div>
+      <%= f.label :商品紹介文 %>
       <%= f.text_area  :remark, rows: 3, class: "form-control" %>
     </div>
     <br>  <br>
-    <div class="text-center">
-      <strong><%= f.label :商品画像 %></strong>
+    <div class="row">
+      <div class="col-md-6">
+      <%= f.label :商品画像 %>
       <%= image_tag(@item.image.url) if @item.image && @item.image.url %>
+      </div>
+      <div class="col-md-6">
       <%= f.file_field :image %>
       <%= f.hidden_field :image_cache %>
     </div>
-    <br>  <br>
+  </div>
+    <br>  <br><br>
     <div class="text-center" class="actions" >
       <%= f.submit :登録する, class:'btn' %>
     </div>

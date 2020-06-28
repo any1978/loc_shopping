@@ -29,9 +29,9 @@
       <td><%= image_tag shop.image.url if shop.image && shop.image.url %></td>
       <td><%= shop.introduction %></td>
       <td><%= shop.address_city +  shop.address_street%></td>
-      <td><%= link_to '詳細を見る', shop_path(shop.id) %></td>
-      <td><%= link_to '編集する', edit_shop_path(shop.id),data: { confirm: '本当に編集していいですか？' }  %></td>
-      <td><%= link_to '削除する', shop_path(shop.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
+      <td><%= link_to '詳細', shop_path(shop.id) %></td>
+      <td><%= link_to edit_shop_path(shop.id),data: { confirm: '本当に編集していいですか？' } do %><i class="far fa-edit fa-lg"></i><% end %></td>
+      <td><%= link_to shop_path(shop.id), method: :delete, data: { confirm: '本当に削除していいですか？' } do %><i class="far fa-trash-alt fa-lg"></i><% end %></td>
     </tr>
   <% end %>
 </table>

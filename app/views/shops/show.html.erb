@@ -7,6 +7,8 @@
 <div class="jumbotron text-center">
   <br>
   <h1><%= @shop.name %></h1>
+  <br><br>
+  <h6><%= @shop.introduction %></h6>
   <br>
     <%
 =begin%>
@@ -77,12 +79,12 @@
         <tr>
           <td><%= item.name %></td>
           <td><%= image_tag(item.image.url, width: 200) if item.image && item.image.url %></td>
-          <td><%= item.remark %></td> 
+          <td><%= item.remark .truncate(24)%></td> 
           <td><%= item.price %><span> 円</span></td> 
-          <td><%= link_to '詳細を見る', shop_item_path(@shop.id, item.id) %></td>
+          <td><%= link_to '詳細', shop_item_path(@shop.id, item.id) %></td>
 
           <% if user_signed_in? %> 
-            <td><%= button_to 'カートに入れる', cart_items_path(shop_id: @shop.id, item_id: item.id), method: :post, remote: true %></td>
+            <td><%= link_to cart_items_path(shop_id: @shop.id, item_id: item.id), method: :post, remote: true  do%><i class="fas fa-shopping-cart fa-lg"></i><% end %></td>
           <% elsif shop_owner_signed_in? %>
             <td><%= link_to '編集する', edit_shop_item_path(@shop.id, item.id),data: { confirm: '本当に編集していいですか？' }  %></td>
             <td><%= link_to '削除する', shop_item_path(@shop.id, item.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>

@@ -9,63 +9,82 @@
         </ul>
       </div>
     <% end %>
-    <div class="text-center">
+    <div>
       <%= f.label :ショップ名 %>
       <%= f.text_field :name, class: "form-control" %>
     </div>
     <br>  <br>
-    <div class="text-center">
+    <div>
       <%= f.label :ショップ紹介文 %>
       <%= f.text_area  :introduction, rows: 5, class: "form-control" %>
     </div>
-    <br>  <br>
-    <div class="text-center">
+    <br>  <br><br>
+  <div class="row">
+    <div class="col-md-6">
       <%= f.label :ショップイメージ画像 %>
       <%= image_tag(@shop.image.url) if @shop.image && @shop.image.url %>
+    </div>
+    <div class="col-md-6"> 
       <%= f.file_field :image %>
       <%= f.hidden_field :image_cache %>
     </div>
-    <br>  <br>
+  </div>
+
+    <br>  <br><br><br>
     <div class="text-center">
-      <h5><strong>住所等詳細情報</strong></h5>
+      <h3>住所等詳細情報</h3>
     </div>
-    <br>  <br>
-    <div class="text-center">
+    <br>  <br><br>
+
+  <div class="row">
+    <div class="col-md-6">
       <%= f.label :郵便番号 %>
       <%= f.text_field :postcode, placeholder: "半角ハイフンなし", class: "form-control" %>
     </div>
-    <br>  <br>
-    <div class="text-center">
+      <div class="col-md-6">
       <%= f.label :都道府県 %>
       <%= f.text_field :prefecture_code, placeholder: "（例）○○県", class: "form-control" %>
     </div>
+  </div>
     <br>  <br>
-    <div class="text-center">
+  <div class="row">
+    <div class="col-md-6">
       <%= f.label :市区町村 %>
       <%= f.text_field :address_city, placeholder: "（例）○○市○○町", class: "form-control" %>
     </div>
     <br>  <br>
-    <div class="text-center">
+    <div class="col-md-6">
       <%= f.label :番地 %>
       <%= f.text_field :address_street, placeholder: "半角数字", class: "form-control"%>
     </div>
+  </div> 
     <br>  <br>
-    <div class="text-center">
+  <div class="row">
+    <div class="col-md-6">
       <%= f.label :建物・部屋番号 %>
       <%= f.text_field :address_building , class: "form-control"%>
     </div>
-
     <br>  <br>
-    <div class="text-center">
+    <div class="col-md-6">
       <%= f.label :電話番号 %>
       <%= f.telephone_field :phone_number, placeholder: "半角ハイフンなし", class: "form-control"%>
     </div>
-    <br>  <br>
+  </div>
+    <br><br><br>
     <div class="text-center" class="actions">
-      <%= f.submit :Submit, class:'btn' %>
+      <%= f.submit "登録情報を更新する", class:'btn' %>
     </div>
     <br>  <br>
     <div class="text-center">
     <%= link_to 'Back to Mypage', shop_owner_path(current_shop_owner.id) %>
     </div>
 <% end %>
+
+  private
+
+	def ensure_not_referenced_by_any_cart_items
+    unless cart_items.empty?
+      errors.add(:base, '品目が存在します。')
+      throw :abort
+    end
+  end

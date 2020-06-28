@@ -17,6 +17,7 @@ class Item < ApplicationRecord
 
   mount_uploader :image, ImagesUploader
 
+
   private
 
 	def ensure_not_referenced_by_any_cart_items
@@ -25,5 +26,4 @@ class Item < ApplicationRecord
       throw :abort
     end
   end
-
 end
