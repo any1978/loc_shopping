@@ -20,7 +20,7 @@ class Item < ApplicationRecord
 
   private
 
-	def ensure_not_referenced_by_any_cart_items
+  def ensure_not_referenced_by_any_cart_items
     unless cart_items.empty?
       errors.add(:base, '品目が存在します。')
       throw :abort
