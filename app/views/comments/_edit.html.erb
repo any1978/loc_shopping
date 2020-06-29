@@ -4,9 +4,7 @@
     <div class="input-field">
       <%= f.text_area :content, class: "materialize-textarea", id: "comment_content_#{shop.id}" %>
       <%= f.label :content, class: "active" %>
-      <%= button_tag :type => "submit" do %>
-        送信
-      <% end %>
+      <%= f.submit "コメント更新する" %>
       <%= link_to :back do %>
         戻る
       <% end %>

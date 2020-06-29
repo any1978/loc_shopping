@@ -1,6 +1,5 @@
 
  <%= render 'layouts/flash' %> 
-
  <%
 =begin%>
  <% ShopOwnerComment.all.order(created_at: :desc).each do |shop_owner_comment| %>    
@@ -23,15 +22,9 @@
       </div>
       <span>投稿日時:<%= time_ago_in_words(shop_owner_comment.created_at) %></span>
       <% if shop_owner_signed_in? %>
+        <span class="badge"><%= link_to t('.edit'), edit_shop_shop_owner_comment_path(shop, shop_owner_comment), remote: true %></span>  
         <span><%= link_to shop_shop_owner_comment_path(shop_owner_comment.shop_id, shop_owner_comment.id), method: :delete, remote: true,
                                         data: { confirm: "本当に削除しますか?"} do %><i class="far fa-trash-alt fa-lg"></i><% end %></span>
-
- <%
-=begin%>
- <span class="badge"><%= link_to t('.edit'), edit_shop_shop_owner_comment_path(shop, shop_owner_comment), remote: true %></span>  
-<%
-=end%>
-
       <% end %>
     </div>
   <% end %>

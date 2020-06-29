@@ -1,17 +1,12 @@
-<%= form_with(model: [@shop, @comment]) do |form| %>
-  <div>
-    <%
-=begin%>
- <%= form.label :質問する %>  
-<%
-=end%>
-    <%= form.text_area :content %>
-  </div>
-  <div class="actions">
-  <%if user_signed_in?%>
-    <%= form.submit "送信" %>
-    <%elsif shop_owner_signed_in?%>
-    <%= form.submit "返信する" %>
+<div class="comment-form">
+  <%= form_with(model: [@shop, @comment]) do |f| %>
+    <div class="input-field">
+      <%= f.text_area :content %>
+      <div class="actions">
+      <%if user_signed_in?%>
+        <%= f.submit "送信" %>
+      <% end %>
+      </div>
+    </div>
   <% end %>
-  </div>
-<% end %>
+</div>

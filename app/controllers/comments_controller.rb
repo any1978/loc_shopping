@@ -1,32 +1,28 @@
 class CommentsController < ApplicationController
+  before_action :set_shop, only: [:create, :edit, :update, :destroy]
   def index
   end
 
   def create
-    # binding.pry
     @shop = Shop.find(params[:shop_id])
-    # @comment = @shop.comments.build(params[:comment_id])
-    # binding.pry
     @comment = @shop.comments.build(comment_params)
     if user_signed_in?
       @comment.user_id = current_user.id
-      # binding.pry
       if @comment.save
         render :index
-        # redirect_to shop_comments_path
       else
       end
-    elsif shop_owner_signed_in?
-      @comment.shop_owner_id = current_shop_owner.id
-      if @comment.save
-        render :index
-        # redirect_to shop_comments_path
-      else
-      end
+    # elsif shop_owner_signed_in?
+    #   @comment.shop_owner_id = current_shop_owner.id
+    #   if @comment.save
+    #     render :index
+    #   else
+    #   end
     end
   end
 
   def edit
+    binding.pry
     @comment = @shop.comments.find(params[:id])
     respond_to do |format|
       flash.now[:notice] = 'コメントの編集中'
