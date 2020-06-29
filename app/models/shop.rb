@@ -29,9 +29,9 @@ class Shop < ApplicationRecord
   has_many :items, through: :itemizes
   # belongs_to :shop_owner, optional: true
   has_many :comments, dependent: :destroy
+  has_many :shop_owner_comments, dependent: :destroy
   # has_many :replies, class_name: Comment, foreign_key: :reply_comment, dependent: :destroy
   
   has_many :favorites, dependent: :destroy
   has_many :favorite_users, through: :favorites, source: :user
-  has_many :shop_owner_comments, dependent: :destroy
 end

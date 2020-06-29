@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
   before_action :set_shop, only: [:create, :edit, :update, :destroy]
+
   def index
   end
 
   def create
-    @shop = Shop.find(params[:shop_id])
+    # @shop = Shop.find(params[:shop_id])
     @comment = @shop.comments.build(comment_params)
     if user_signed_in?
       @comment.user_id = current_user.id
@@ -12,20 +13,14 @@ class CommentsController < ApplicationController
         render :index
       else
       end
-    # elsif shop_owner_signed_in?
-    #   @comment.shop_owner_id = current_shop_owner.id
-    #   if @comment.save
-    #     render :index
-    #   else
-    #   end
     end
   end
 
   def edit
-    binding.pry
     @comment = @shop.comments.find(params[:id])
+    # binding.pry
     respond_to do |format|
-      flash.now[:notice] = 'コメントの編集中'
+      # flash.now[:notice] = 'コメントの編集中'
       format.js { render :edit }
     end
   end
@@ -53,6 +48,9 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:comment_id, :content, :reply_comment, :shop_id, :user_id, :shop_owner)#.merge(user_id: current_user.id, shop_id: params[:shop_id])
+      params.require(:comment).permit(:content, :shop_id, :user_id)#.merge(user_id: current_user.id, shop_id: params[:shop_id])
+    end
+    def set_shop
+      @shop = Shop.find(params[:shop_id])
     end
 end

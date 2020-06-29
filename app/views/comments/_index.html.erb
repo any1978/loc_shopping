@@ -1,31 +1,17 @@
 <%= render 'layouts/flash' %>
+
 <% comments.all.order(created_at: :desc).each do |comment| %>
   <% unless comment.id.nil? %>
     <p><strong><%="#{comment.user.first_name}さんのメッセージ"%></strong></p>
-          <div id="errors_area_<%= comment.id %>">
-            <%= render partial: 'comments/edit_error' %>
-          </div>
+      <div id="errors_area_<%= comment.id %>">
+        <%= render partial: 'comments/edit_error' %>
+      </div>
     <p><%= comment.content %></p>
     <span>投稿日時:<%= time_ago_in_words(comment.created_at) %></span>
     <% if comment.user == current_user %>
-      <span><%= link_to t('.edit'), edit_shop_comment_path(comment.shop_id, comment.id), method: :get, remote: true %></span> 
+      <span><%= link_to t('.edit'), edit_shop_comment_path(@shop, comment), remote: true %></span> 
       <span><%= link_to shop_comment_path(comment.shop_id, comment.id), method: :delete, remote: true,
                             data: { confirm: "本当に削除しますか?"} , class: "delete_link"  do %><i class="far fa-trash-alt fa-lg"></i><% end %></span></p>
     <% end %>
-
-
- <%
-=begin%>
- <p><strong><%= link_to "[店長]", shop_path(comment.shop.id) %></strong></p>
-      <p>　コメント：<%= comment.content %>
-    <% if shop_owner_signed_in? %> 
-      <% if comment.shop.shop_owner_id == current_shop_owner.id %>
-        <span >　<%= link_to shop_comment_path(comment.shop_id, comment.id), method: :delete, remote: true do %><i class="far fa-trash-alt fa-lg"></i><% end %></span></p>
-      <% end %> 
-
- <% end %>  
-<%
-=end%>
-
   <% end %>
 <% end %>

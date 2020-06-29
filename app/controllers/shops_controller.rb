@@ -6,19 +6,10 @@ class ShopsController < ApplicationController
   before_action :authenticate_shop_owner!, only: %i[new edit update destroy]
 
   def index
-
-    # @search = Shop.ransack(params[:q])
-    # @shops = @search.result
-
     @shops = Shop.all
-
-    #geocode search
-    # @shops = Shop.where(active: true).limit(10)
-
 
     # if user_signed_in?(current_user.id)
     #   @shops_address = Shop.near(session[:loc_search], 2, order: 'distance')
-
     # end
 
     if params[:search].present? && params[:search].strip != ""
@@ -29,10 +20,9 @@ class ShopsController < ApplicationController
     else
       @shops_address = Shop.all
     end
-# binding.pry
+
     @search = @shops_address.ransack(params[:q])
     # @search = Shop.ransack(params[:q])
-    # binding.pry
     @shops = @search.result
     # @shops = Shop.all
     # @arrShops = @shops.to_a
@@ -44,12 +34,7 @@ class ShopsController < ApplicationController
 
   def new
     @shop = Shop.new
-    # @shop = current_shop_owner.shops.build
-    # if params[:back]
-    #   @shop = Shop.new(shop_params)
-    # else
-    #   @shop = Shop.new
-    # end
+
   end
 
   def create
@@ -73,8 +58,8 @@ class ShopsController < ApplicationController
 
   def show
     @items = Item.where(shop_id: params[:id])
-    @comment = Comment.new
     @comments = @shop.comments
+    @comment = @shop.comments.build
 
     @shop_owner_comments = @shop.shop_owner_comments
     @shop_owner_comment = @shop.shop_owner_comments.build
