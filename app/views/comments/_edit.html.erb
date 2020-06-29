@@ -1,0 +1,15 @@
+<%= render 'layouts/flash' %>
+<div id="comment_edit_form">
+  <%= form_with(model: [shop, comment]) do |f| %>
+    <div class="input-field">
+      <%= f.text_area :content, class: "materialize-textarea", id: "comment_content_#{shop.id}" %>
+      <%= f.label :content, class: "active" %>
+      <%= button_tag :type => "submit" do %>
+        送信
+      <% end %>
+      <%= link_to :back do %>
+        戻る
+      <% end %>
+    </div>
+  <% end %>
+</div>

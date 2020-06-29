@@ -10,7 +10,7 @@ class ShopsController < ApplicationController
     # @search = Shop.ransack(params[:q])
     # @shops = @search.result
 
-    # @shops = Shop.all.limit(6)
+    @shops = Shop.all
 
     #geocode search
     # @shops = Shop.where(active: true).limit(10)
@@ -24,7 +24,6 @@ class ShopsController < ApplicationController
     if params[:search].present? && params[:search].strip != ""
       session[:loc_search] = params[:search]
     end
-
     if session[:loc_search] && session[:loc_search] != ""
       @shops_address = Shop.near(session[:loc_search], 2, order: 'distance')
     else
@@ -35,8 +34,12 @@ class ShopsController < ApplicationController
     # @search = Shop.ransack(params[:q])
     # binding.pry
     @shops = @search.result
+    # @shops = Shop.all
+    # @arrShops = @shops.to_a
 
-    @arrShops = @shops.to_a
+    if params[:search] == ""
+      @shops = Shop.all
+    end
   end
 
   def new
@@ -54,7 +57,7 @@ class ShopsController < ApplicationController
     @shop.address = @shop.prefecture_code + @shop.address_city
     @shop.address = @shop.address.gsub(/\d+/, "").gsub(/\-+/, "")
     if @shop.save
-      binding.pry
+      # binding.pry
       redirect_to shop_owner_path(current_shop_owner.id), notice: "ショップ情報を作成しました！"
     else
       render :new
@@ -88,7 +91,7 @@ class ShopsController < ApplicationController
   def update
     @shop.address = @shop.prefecture_code + @shop.address_city
     @shop.address = @shop.address.gsub(/\d+/, "").gsub(/\-+/, "")
-    binding.pry
+    # binding.pry
     if @shop.update(shop_params)
       redirect_to shop_owner_path(current_shop_owner.id), notice: "ショップ情報を編集しました！"
     else
@@ -108,7 +111,7 @@ class ShopsController < ApplicationController
     end
 
     if session[:loc_search] && session[:loc_search] != ""
-      @shops_address = Shop.where(active: true).near(session[:loc_search], 3, order: 'distance')
+      @shops_address = Shop.where(active: true).near(session[:loc_search], 2, order: 'distance')
     else
       @shops_address = Shop.where(active: true).all
     end
