@@ -17,6 +17,21 @@
 .text-center{
   width: auto;
 }
+
+.jumbotron {
+	padding-top: 0px;
+  background: image-url("1469857_l.jpg");
+	background-size: cover;
+  background-position: 100% 50%;
+  height: 100vh;
+  color: white;
+}
+
+// .jumbotron-extend {
+//   position: relative;
+//   height: 100vh;
+//   min-height: 300px;
+// }
 // .content {
 // 	margin: 0;
 // 	padding: 0;

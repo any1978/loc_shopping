@@ -1,9 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_shop, only: [:create, :edit, :update, :destroy]
 
-  def index
-  end
-
   def create
     # @shop = Shop.find(params[:shop_id])
     @comment = @shop.comments.build(comment_params)
@@ -20,7 +17,7 @@ class CommentsController < ApplicationController
     @comment = @shop.comments.find(params[:id])
     # binding.pry
     respond_to do |format|
-      # flash.now[:notice] = 'コメントの編集中'
+      flash.now[:notice] = 'コメントの編集中'
       format.js { render :edit }
     end
   end

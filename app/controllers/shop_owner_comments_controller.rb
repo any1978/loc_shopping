@@ -5,9 +5,10 @@ class ShopOwnerCommentsController < ApplicationController
     @shop = Shop.find(params[:shop_id])
     @shop_owner_comment = @shop.shop_owner_comments.build(shop_owner_comment_params)
     @shop_owner_comment.shop_owner_id = current_shop_owner.id
+    @shop_owner_comments = ShopOwnerComment.where(shop_id: params[:shop_id]).all.order(created_at: :desc)
     respond_to do |format|
       if @shop_owner_comment.save
-        flash.now[:notice] = 'コメントが投稿されました'
+        # flash.now[:notice] = 'コメントが投稿されました'
         format.js { render :index }
       else
         flash.now[:notice] = 'コメントの投稿に失敗しました'
@@ -39,11 +40,12 @@ class ShopOwnerCommentsController < ApplicationController
 
   def destroy
     @shop_owner_comment = ShopOwnerComment.find(params[:id])
-      @shop_owner_comment.destroy
-      respond_to do |format|
-        flash.now[:notice] = 'コメントが削除されました'
-        format.js { render :index }
-      end
+    @shop_owner_comment.destroy
+    @shop_owner_comments = ShopOwnerComment.where(shop_id: params[:shop_id]).all.order(created_at: :desc)
+    respond_to do |format|
+      flash.now[:notice] = 'コメントが削除されました'
+      format.js { render :index }
+    end
   end
 
   private

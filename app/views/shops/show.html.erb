@@ -77,8 +77,8 @@
           <% if user_signed_in? %> 
             <td><%= link_to cart_items_path(shop_id: @shop.id, item_id: item.id), method: :post, remote: true  do%><i class="fas fa-shopping-cart fa-lg"></i><% end %></td>
           <% elsif shop_owner_signed_in? %>
-            <td><%= link_to '編集する', edit_shop_item_path(@shop.id, item.id),data: { confirm: '本当に編集していいですか？' }  %></td>
-            <td><%= link_to '削除する', shop_item_path(@shop.id, item.id), method: :delete, data: { confirm: '本当に削除していいですか？' }  %></td>
+            <td><%= link_to edit_shop_item_path(@shop.id, item.id),data: { confirm: '本当に編集していいですか？' } do %><i class="far fa-edit fa-lg"></i><% end %></td>
+            <td><%= link_to shop_item_path(@shop.id, item.id), method: :delete, data: { confirm: '本当に削除していいですか？' } do %><i class="far fa-trash-alt fa-lg"></i><% end %></td>
           <% else %>
             <td><%= link_to new_user_session_path do%><i class="fas fa-shopping-cart fa-lg"></i><% end %></td>
           <% end %> 

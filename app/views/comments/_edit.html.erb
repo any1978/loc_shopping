@@ -1,4 +1,6 @@
-<%= render 'layouts/flash' %>
+<%
+=begin%>
+ <%= render 'layouts/flash' %>
 <div id="comment_edit_form">
   <%= form_with(model: [@shop, comment]) do |f| %>
     <% if comment.errors.any? %>
@@ -10,4 +12,30 @@
       </div>
     <% end %>
   <% end %>
-</div>
+</div> 
+<%
+=end%>
+
+<%= form_with(model: [shop, comment]) do |form| %>
+  <% if comment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+      <ul>
+      <% comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li> 
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.text_area :content, id: "comment_content_#{shop.id}" %>
+    <%
+=begin%>
+ <%= form.label :content %> 
+<%
+=end%>
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

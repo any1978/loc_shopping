@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'rooms/show'
+  root to: 'shops#home'
   # get 'comments/index'
   # get 'carts/new'
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   # get 'home/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "shops#index"
+  # root to: "shops#index"
 
   # resources :items do
   #   collection do

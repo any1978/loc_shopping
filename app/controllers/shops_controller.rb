@@ -5,6 +5,10 @@ class ShopsController < ApplicationController
   before_action :set_shop, only: %i[show edit update destroy]
   before_action :authenticate_shop_owner!, only: %i[new edit update destroy]
 
+
+  # def home    
+  # end
+
   def index
     @shops = Shop.all
 
