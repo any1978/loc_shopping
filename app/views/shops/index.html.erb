@@ -11,7 +11,7 @@
 <div class="col-md-8" style="padding: 0px;">
 <%= form_tag root_path, method: :get, enforce_utf8: false do %> 
   <div class="input-group">
-    <%= text_field_tag :search, params[:search], placeholder: "地元のお店を探してみよう！（例）○○県○○市○○町", class: "form-control", id: "autolocation" %>
+    <%= text_field_tag :search, params[:search], placeholder: "市区町村を入力して地元のお店を探してみよう！（例）○○市（区）○○町", class: "form-control", id: "autolocation" %>
   <span class="input-group-btn"><%= button_tag "検索", :name => nil, class: "btn btn-primary" %></span>
   </div>
 <% end %> 
