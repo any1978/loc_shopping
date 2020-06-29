@@ -4,13 +4,21 @@
 <% end %> 
 
 
-<div class="jumbotron text-center">
+<%
+=begin%>
+ <div class="jumbotron text-center"> 
+<%
+=end%>
   <br>
-  <h1><%= @shop.name %></h1>
+  <h1 class="text-center" ><%= @shop.name %></h1>
   <br><br>
-  <h6><%= @shop.introduction %></h6>
+  <h6 class="text-center"><%= @shop.introduction %></h6>
   <br>
-</div>
+<%
+=begin%>
+ </div> 
+<%
+=end%>
 <br/><br/>
 <div class="container">
   <div class="row">
