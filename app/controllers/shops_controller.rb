@@ -53,8 +53,8 @@ class ShopsController < ApplicationController
     @shop = current_shop_owner.shops.build(shop_params)
     @shop.address = @shop.prefecture_code + @shop.address_city
     @shop.address = @shop.address.gsub(/\d+/, "").gsub(/\-+/, "")
-
     if @shop.save
+      binding.pry
       redirect_to shop_owner_path(current_shop_owner.id), notice: "ショップ情報を作成しました！"
     else
       render :new
@@ -69,8 +69,6 @@ class ShopsController < ApplicationController
   end 
 
   def show
-    # @shop = Shop.find(params[:id])
-    # @items = @shop.items
     @items = Item.where(shop_id: params[:id])
     @comment = Comment.new
     @comments = @shop.comments
@@ -88,6 +86,9 @@ class ShopsController < ApplicationController
   end
 
   def update
+    @shop.address = @shop.prefecture_code + @shop.address_city
+    @shop.address = @shop.address.gsub(/\d+/, "").gsub(/\-+/, "")
+    binding.pry
     if @shop.update(shop_params)
       redirect_to shop_owner_path(current_shop_owner.id), notice: "ショップ情報を編集しました！"
     else

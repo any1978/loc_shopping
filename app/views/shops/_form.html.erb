@@ -79,12 +79,3 @@
     <%= link_to 'Back to Mypage', shop_owner_path(current_shop_owner.id) %>
     </div>
 <% end %>
-
-  private
-
-	def ensure_not_referenced_by_any_cart_items
-    unless cart_items.empty?
-      errors.add(:base, '品目が存在します。')
-      throw :abort
-    end
-  end

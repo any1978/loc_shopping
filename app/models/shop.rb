@@ -2,8 +2,15 @@ class Shop < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   
+  address = %w(prefecture_code address_city adress_street address_building).join
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
+  after_update :geocode
+  # geocoded_by :prefecture_code :address_city :adress_street 
+  # after_validation :geocode, if: :prefecture_code_changed?, if: :address_city_changed?, if: :adress_street_changed? 
+
+  reverse_geocoded_by :latitude, :longitude
+  after_validation :reverse_geocode
 
   validates :name, presence: true, length: {maximum: 50}
   validates :introduction, presence: true
