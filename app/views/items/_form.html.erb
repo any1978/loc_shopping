@@ -19,12 +19,12 @@
     <div class="row">
       <div class="col-md-6">
       <%= f.label :価格 %>
-      <%= f.number_field :price, class: "form-control", placeholder: "円（税抜）"%>
+      <%= f.number_field :price, class: "form-control", min: 0, placeholder: "円（税抜）"%>
     </div>
         <br>  <br>
     <div class="col-md-6">
       <%= f.label :在庫数 %>
-      <%= f.number_field :stock, class: "form-control", placeholder: "個"%>
+      <%= f.number_field :stock, class: "form-control", min: 0, placeholder: "個"%>
     </div>
   </div>
     <br>  <br>
