@@ -34,7 +34,6 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-# binding.pry
         format.any { redirect_to shops_path, notice: 'ご注文ありがとうございました！' }
         format.json { render :show, status: :created, location: @order }
       else

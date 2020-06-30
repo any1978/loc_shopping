@@ -20,7 +20,7 @@
 
 .jumbotron {
 	padding-top: 0px;
-  background: image-url("1469857_l.jpg");
+  background: image-url("a1469857_l.jpg");
 	background-size: cover;
   background-position: 100% 50%;
   height: 100vh;
@@ -28,7 +28,7 @@
 }
 
 .midasi{
-  line-height: 35px;
+  line-height: 40px;
 }
 // .jumbotron-extend {
 //   position: relative;
@@ -121,6 +121,11 @@ div.actions {
   display: table;
 }
 
+body {
+  font-family: 'Arial',"Hiragino Maru Gothic Pro";
+  }
+
+
 // #error_explanation {
 //   width: 450px;
 //   border: 2px solid #20b2aa;
@@ -145,6 +150,23 @@ div.actions {
 
 // label {
 //   display: block; }
+
+
+.btn1 {
+
+  display: inline-block;
+  /* background-color: #3B5998; */
+  padding: 0.5em 1em;
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  border: solid 1px rgb(255, 255, 255);
+  border-radius: 3px;
+  transition: .4s;
+  margin-left: 0px;
+  font-size: 1rem;
+}
+
+
 
 .btn {
 

@@ -6,7 +6,7 @@
 	<h2>カートの内容</h2>
 
 	<table>
-		<%= render(@cart.cart_tems) %>
+		<%= render(@cart.cart_items) %>
 
 		<tfoot>
 			<tr>
@@ -16,5 +16,5 @@
 		</tfoot>
 	</table>
 
-	<%= button_to 'カートを空にする', @cart, method: :delete, data: { confirm: '本当によろしいですか？' } %>
+	<%= button_to 'render @cart', @cart, method: :delete, data: { confirm: '本当によろしいですか？' } %>
 </article>

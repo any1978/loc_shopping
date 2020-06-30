@@ -27,7 +27,7 @@ class CartItemsController < ApplicationController
     respond_to do |format|
       if @cart_item.save
         format.any { redirect_to shop_path(params[:shop_id]) }
-        format.js
+        format.js{ @current_item = @line_item }
         format.json { render :show, status: :created, location: @cart_item }
       else
         format.html { render :new }
@@ -36,21 +36,7 @@ class CartItemsController < ApplicationController
     end
   end
 
-  # def create
 
-  #   item = Item.find(params[:item_id])
-  #   @cart_item = @cart.add_item(item)
-  #   # binding.pry
-  #   if @cart_item.save
-  #     # redirect_to cart_path(@cart_item.id)
-  #     redirect_to shop_path(current_user.id)
-  #   else
-  #     render :new
-  #   end
-  # end
-
-  # PATCH/PUT /cart_items/1
-  # PATCH/PUT /cart_items/1.json
   def update
     respond_to do |format|
       if @cart_item.update(cart_item_params)
