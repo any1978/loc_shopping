@@ -56,16 +56,16 @@ webショップを通して、店主とユーザーの間でコミュニケー�
  
  
 ## テーブル定義
-https://docs.google.com/spreadsheets/d/1R6-2a3fB4_jza0yY65ln3qtAtvPhA5k00PY3daSqVvU/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1ksjR8jALVoDQvgkHGg7ezRKrk37cmRDlron3tUVJ9RQ/edit?usp=sharing
 
 ## ER図
-https://docs.google.com/spreadsheets/d/1R6-2a3fB4_jza0yY65ln3qtAtvPhA5k00PY3daSqVvU/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1EOhlkSKQrzxTB12Nvu3rOVGR8sedDboidbSlczKePEw/edit?usp=sharing
 
 ## 画面遷移図
-https://docs.google.com/spreadsheets/d/1R6-2a3fB4_jza0yY65ln3qtAtvPhA5k00PY3daSqVvU/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/1gaDbEnoRRVu-kATbk0w6C1HUoVk7YX1hvNH2a7GcKT4/edit?usp=sharing
 
 ## 画面ワイヤーフレーム
-https://docs.google.com/spreadsheets/d/1R6-2a3fB4_jza0yY65ln3qtAtvPhA5k00PY3daSqVvU/edit?usp=sharing
+https://docs.google.com/spreadsheets/d/19JrBziQ9RmG_a48GmnSglHNQ7V8L1j_MggaO5qxm7Sw/edit?usp=sharing
 
 ## 使用予定Gem
 - carrierwave
